@@ -65,6 +65,7 @@ export function Footer() {
 							</ul>
 						</nav>
 					</section>
+					
 				</div>
 			</div>			
 		</footer>
