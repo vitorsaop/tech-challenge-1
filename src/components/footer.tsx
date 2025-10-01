@@ -6,7 +6,7 @@ export function Footer() {
 		<footer className="bg-[#000] pt-9 pb-9 text-white">
 			<div className="container mx-auto">
 				<div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-					
+										
 					{/* Serviços */}
 					<section aria-labelledby="services">
 						<h4 id="services" className="mb-5 text-[20px] font-semibold">
