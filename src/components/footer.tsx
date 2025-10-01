@@ -49,17 +49,17 @@ export function Footer() {
 							<ul className="flex items-center space-x-8" role="list">
 								<li>
 									<Link href={"https://instagram.com"} target="_blank" rel='noopener noreferrer'>
-										<Image src={"/instagram.svg"} alt='Instagram icon' aria-hidden width={40} height={40} />
+										<Image src={"/instagram.svg"} alt='Instagram icon' aria-hidden width={36} height={36} />
 									</Link>									
 								</li>
 								<li>
 									<Link href={"https://whatsapp.com/"} target='_blank' rel='noopener noreferrer'>
-										<Image src={"/whatsapp.svg"} alt='WhatsApp icon' aria-hidden width={40} height={40} />
+										<Image src={"/whatsapp.svg"} alt='WhatsApp icon' aria-hidden width={36} height={36} />
 									</Link>									
 								</li>
 								<li>
 									<Link href={"http://youtube.com"} target="_blank" rel='noopener noreferrer'>
-										<Image src={"/youtube.svg"} alt='YouTube icon' aria-hidden width={43} height={43} />
+										<Image src={"/youtube.svg"} alt='YouTube icon' aria-hidden width={38} height={38} />
 									</Link>
 								</li>
 							</ul>
