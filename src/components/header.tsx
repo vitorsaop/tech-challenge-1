@@ -12,8 +12,8 @@ export function Header() {
               <Image src={"/logo-green.svg"} alt="Logo ByteBank" width={200} height={32} />
             </Link>
             <nav className="items-start space-x-18" aria-label="Navegação principal">
-              <Link className="text-[#47A138] text-[23px] font-medium hover:underline" href={"#"}>Sobre</Link>
-              <Link className="text-[#47A138] text-[23px] font-medium hover:underline" href={"#"}>Serviços</Link>
+              <Link href={"#"} className="text-[#47A138] text-[23px] font-medium hover:underline">Sobre</Link>
+              <Link href={"#"} className="text-[#47A138] text-[23px] font-medium hover:underline">Serviços</Link>
             </nav>            
           </div>
           <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
