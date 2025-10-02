@@ -25,6 +25,7 @@ export default function Services() {
                   <Link href={"#"} className="text-[18px] font-medium text-[#666]">Bytebank content</Link>
                 </nav>
               </div>
+              
               <div className="grow-7">
                 <section className="bg-[#004D61] p-6 rounded-[12px] h-100 mb-5">
                   Leandro
@@ -33,102 +34,130 @@ export default function Services() {
                   Leandro
                 </section>
               </div>
+              
               <div className="grow-2 bg-white p-6 rounded-[12px]">
-                <section>
-                  
-                  <h2 className="text-[24px] font-medium text-[#000]">Extrato</h2>
-                  
-                  <div className="mb-5">
+                <section aria-labelledby="extrato-financeiro">                  
+                  <h2 id="extrato-financeiro" className="text-[24px] font-medium text-[#000] mb-10">Extrato financeiro</h2> 
 
-                    <h3 className="text-[18px] font-bold text-[#918f8f] mb-3.5 mt-2.5">Janeiro</h3>  
-
-                    <ul className="text-[16px] font-semibold text-[#000] text-right">
+                  {/* Mês Outubro */}
+                  <div className="mb-10">                
+                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-4 mt-3 text-right">
+                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Outubro / 2025
+                    </h3>
+                    <ul className="text-[16px] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        Transferência
-                        <br />
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">04/10/2025</span>
+                          <span className="text-[#000]">PIX</span>
+                        </p>                        
+                        <span className="text-[green]">+ R$ 8.294,50</span>
+                      </li>
+                      <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">02/10/2025</span>
+                          <span className="text-[#000]">PIX</span>
+                        </p>                        
+                        <span className="text-[green]">+ R$ 6.674,90</span>
+                      </li>
+                      <li className="mb-2.5 pb-2.5">
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">01/10/2025</span>
+                          <span className="text-[#000]">TED</span>
+                        </p>                        
+                        <span className="text-[red]">- R$ 1.365,86</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Mês Setembro */}
+                  <div className="mb-10">
+                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-4 mt-3 text-right">
+                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Setembro / 2025
+                    </h3>
+                    <ul className="text-[16px] text-right">
+                      <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">27/09/2025</span>
+                          <span className="text-[#000]">Depósito</span>
+                        </p>                        
                         <span className="text-[green]">+ R$ 1.100,00</span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        Depósito
-                        <br />
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">20/09/2025</span>
+                          <span className="text-[#000]">Transferência</span>
+                        </p>                        
                         <span className="text-[red]">- R$ 2.360,00</span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        Depósito
-                        <br />
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">18/09/2025</span>
+                          <span className="text-[#000]">PIX</span>
+                        </p>                                    
                         <span className="text-[green]">+ R$ 975,00</span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        Saque
-                        <br />
-                        <span className="text-[green]">+ R$ 2.150,00</span>
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">16/09/2025</span>
+                          <span className="text-[#000]">Transferência</span>
+                        </p>                                 
+                        <span className="text-[red]">+ R$ 2.150,00</span>
                       </li>
                       <li className="mb-2.5 pb-2.5">
-                        PIX
-                        <br />
-                        <span className="text-[red]">- R$ 100,00</span>
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">12/09/2025</span>
+                          <span className="text-[#000]">Saque</span>
+                        </p>
+                        <span className="text-[red]">- R$ 2.680,75</span>
                       </li>
                     </ul>
-
                   </div>
 
-                  <div className="mb-5">
-
-                    <h3 className="text-[18px] font-bold text-[#918f8f] mb-3.5 mt-2.5">Fevereiro</h3>  
-
-                    <ul className="text-[16px] font-semibold text-[#000] text-right">
+                  {/* Mês Agosto */}
+                  <div className="mb-10">                    
+                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-4 mt-3 text-right">
+                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Agosto / 2025
+                    </h3>
+                    <ul className="text-[16px] text-right">                      
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        Transferência
-                        <br />
-                        <span className="text-[green]">+ R$ 6.170,00</span>
-                      </li>                      
-                      <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        Depósito
-                        <br />
-                        <span className="text-[green]">+ R$ 100,00</span>
-                      </li>                      
-                      <li className="mb-2.5 pb-2.5">
-                        PIX
-                        <br />
-                        <span className="text-[red]">- R$ 745,70</span>
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">20/08/2025</span>
+                          <span className="text-[#000]">Transferência</span>
+                        </p>                        
+                        <span className="text-[green]">+ R$ 2.360,00</span>
                       </li>
-                    </ul>
-
-                  </div>
-
-                  <div className="mb-5">
-
-                    <h3 className="text-[18px] font-bold text-[#918f8f] mb-3.5 mt-2.5">Março</h3>  
-
-                    <ul className="text-[16px] font-semibold text-[#000] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        TED
-                        <br />
-                        <span className="text-[green]">+ R$ 1.070,00</span>
-                      </li>                      
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">14/08/2025</span>
+                          <span className="text-[#000]">PIX</span>
+                        </p>                                    
+                        <span className="text-[green]">+ R$ 9.975,00</span>
+                      </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        Depósito
-                        <br />
-                        <span className="text-[green]">+ R$ 9.100,00</span>
-                      </li>                      
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">10/08/2025</span>
+                          <span className="text-[#000]">Depósito</span>
+                        </p>                                 
+                        <span className="text-[green]">+ R$ 759,00</span>
+                      </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        PIX
-                        <br />
-                        <span className="text-[red]">- R$ 2.745,70</span>
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">05/08/2025</span>
+                          <span className="text-[#000]">PIX</span>
+                        </p>
+                        <span className="text-[red]">+ R$ 2.680,75</span>
                       </li>
                       <li className="mb-2.5 pb-2.5">
-                        PIX
-                        <br />
-                        <span className="text-[green]">- R$ 4.097,10</span>
+                        <p className="flex justify-between w-full">
+                          <span className="text-[#a7a7a7]">05/08/2025</span>
+                          <span className="text-[#000]">Cartão de crédito</span>
+                        </p>
+                        <span className="text-[red]">+ R$ 2.680,75</span>
                       </li>
                     </ul>
-
                   </div>
-                  
-
                 </section>
-              </div>             
-               
+              </div>    
             </div>
           </div>
         </div>
