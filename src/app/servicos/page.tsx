@@ -41,7 +41,7 @@ export default function Services() {
 
                   {/* Mês Outubro */}
                   <div className="mb-10">                
-                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-4 mt-3 text-right">
+                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
                       <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Outubro / 2025
                     </h3>
                     <ul className="text-[16px] text-right">
@@ -80,7 +80,7 @@ export default function Services() {
 
                   {/* Mês Setembro */}
                   <div className="mb-10">
-                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-4 mt-3 text-right">
+                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
                       <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Setembro / 2025
                     </h3>
                     <ul className="text-[16px] text-right">
@@ -139,7 +139,7 @@ export default function Services() {
 
                   {/* Mês Agosto */}
                   <div className="mb-10">                    
-                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-4 mt-3 text-right">
+                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
                       <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Agosto / 2025
                     </h3>
                     <ul className="text-[16px] text-right">                      
