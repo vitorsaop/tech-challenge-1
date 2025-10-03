@@ -27,7 +27,7 @@ export default function Services() {
               </div>
 
               <div className="grow-8">
-                <section className="bg-[#004D61] p-6 rounded-[12px] h-100 mb-5">
+                <section className="bg-[#CCC] p-6 rounded-[12px] h-100 mb-5">
                   Leandro
                 </section>
                 <section className="bg-[#CCC] p-6 rounded-[12px] h-100">

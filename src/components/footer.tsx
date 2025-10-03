@@ -9,7 +9,7 @@ export function Footer() {
 										
 					{/* Serviços */}
 					<section aria-labelledby="services">
-						<h4 id="services" className="mb-5 text-[20px] font-semibold">
+						<h4 id="services" className="mb-5 text-[20px] font-semibold text-[#47a138]">
 							Serviços
 						</h4>
 						<nav aria-label="Serviços">
@@ -29,7 +29,7 @@ export function Footer() {
 					
 					{/* Contato */}
 					<section aria-labelledby="contact">
-						<h4 id="contact" className="mb-5 text-[20px] font-semibold">
+						<h4 id="contact" className="mb-5 text-[20px] font-semibold text-[#47a138]">
 							Contato
 						</h4>
 						<p className="mb-3 text-lg">(11) 0800-000-0000</p>
@@ -39,7 +39,7 @@ export function Footer() {
 					
 					{/* Desenvolvido por Alura */}
 					<section aria-labelledby="developer-by-alura">
-						<h4 id="developer-by-alura" className="mb-5 text-[20px] font-semibold text-center">
+						<h4 id="developer-by-alura" className="mb-5 text-[20px] font-semibold text-center text-[#47a138]">
 							Desenvolvido por Alura
 						</h4>
 						<figure className='flex items-center justify-center mt-6 mb-6'>

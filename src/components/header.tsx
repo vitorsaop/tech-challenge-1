@@ -4,7 +4,7 @@ import Image from 'next/image';
 export function Header() {
   return (
     <header className="flex items-center sticky top-0 z-50 bg-[#000] shadow-sm h-22 text-white">
-      <div className="container mx-auto">
+      <div className="w-full px-10">
         <div className="flex items-center justify-between">
           <div className="items-center flex gap-18">
             <Link href="/" aria-label="ByteBank - Página Inicial">
@@ -12,10 +12,10 @@ export function Header() {
             </Link>
             <nav className="space-x-14" aria-label="Navegação principal">
               <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Home</Link>
-              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Sobre</Link>
-              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Serviços</Link>
-              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Investimentos</Link>
-              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Seguros</Link>
+              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Para você</Link>
+              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Para empresas</Link>
+              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Bytebank</Link>
+              <Link href={"#"} className="text-[#47A138] text-[20px] font-medium hover:underline">Ajuda</Link>
             </nav>            
           </div>
           <div className='flex gap-5 md:grid-cols-2'>            
