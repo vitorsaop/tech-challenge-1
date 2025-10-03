@@ -13,8 +13,11 @@ export function HeaderLogado() {
           </div>
           <div className="flex gap-5 md:grid-cols-1">            
             <div className="flex items-center -space-x-1 overflow-hidden">
-              <span className="text-[#47A138] text-[16px]">Paulo Oliveira Gomes da Silva</span>
-              <Image src={"/user.png"} width={48} height={48} alt="Paulo Oliveira Gomes da Silva" className="inline-block ml-6 rounded-full"/>              
+              <p className="text-right leading-5">
+                <span className="block text-[17px] text-[#47A138]">Paulo Oliveira Gomes da Silva</span>
+                <span className="block text-[14px] text-[#FFF]">Ag. 0897 - C/C - 16450-9</span>
+              </p>
+              <Image src={"/user.png"} width={50} height={50} alt="Paulo Oliveira Gomes da Silva" className="inline-block ml-6 rounded-full"/>              
             </div>
           </div>
         </div>
