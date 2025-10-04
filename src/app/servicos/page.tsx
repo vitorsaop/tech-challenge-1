@@ -30,9 +30,40 @@ export default function Services() {
                 <section className="bg-[#CCC] p-6 rounded-[12px] h-100 mb-5">
                   Leandro
                 </section>
-                <section className="bg-[#CCC] p-6 rounded-[12px] h-100">
-                  Leandro
+                <section className="bg-[#CCC] p-6 rounded-[12px] h-100 grid grid-cols-3 gap-5">
+
+                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Image src={"/emprestimo.svg"} alt="Empréstimo" width={70} height={70} className="mb-3.5" />
+                    Empréstimo
+                  </Link>
+
+                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Image src={"/meus-cartoes.svg"} alt="Cartões" width={70} height={70} className="mb-3.5"/>
+                    Cartões
+                  </Link>
+
+                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Image src={"/doacoes.svg"} alt="Doações" width={70} height={70} className="mb-3.5" />
+                    Doações
+                  </Link>
+
+                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Image src={"/pix.svg"} alt="PIX" width={70} height={70} className="mb-3.5" />
+                    PIX
+                  </Link>
+
+                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Image src={"/seguros.svg"} alt="Seguros" width={70} height={70} className="mb-3.5" />
+                    Seguros
+                  </Link>
+
+                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Image src={"/credito-celular.svg"} alt="Crédito celular" width={70} height={70} className="mb-3.5" />
+                    Crédito celular
+                  </Link>
+                  
                 </section>
+
               </div>
               
               <div className="grow-1 bg-white p-6 rounded-[12px]">
