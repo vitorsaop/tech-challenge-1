@@ -37,15 +37,15 @@ export function Footer() {
 						<p className="mb-3 text-lg">ouvidoria@bytebank.com.br</p>
 					</section>
 					
-					{/* Desenvolvido por Alura */}
-					<section aria-labelledby="developer-by-alura">
-						<h4 id="developer-by-alura" className="mb-5 text-[20px] font-semibold text-center text-[#47a138]">
+					{/* Desenvolvido por Bytebank */}
+					<section aria-labelledby="developer-by-bytebank">
+						<h4 id="developer-by-bytebank" className="mb-5 text-[20px] font-semibold text-center text-[#47a138]">
 							Desenvolvido por Bytebank
 						</h4>
 						<figure className='flex items-center justify-center mt-6 mb-6'>
 							<Image src={"/logo-white.svg"} alt='Logo Branco' width={180} height={35} />
 						</figure>						
-						<nav className="flex items-center justify-center" aria-label="Desenvolvido por Alura">							
+						<nav className="flex items-center justify-center" aria-label="Desenvolvido por Bytebank">							
 							<ul className="flex items-center space-x-8" role="list">
 								<li>
 									<Link href={"https://instagram.com"} target="_blank" rel='noopener noreferrer'>
