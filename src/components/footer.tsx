@@ -40,7 +40,7 @@ export function Footer() {
 					{/* Desenvolvido por Alura */}
 					<section aria-labelledby="developer-by-alura">
 						<h4 id="developer-by-alura" className="mb-5 text-[20px] font-semibold text-center text-[#47a138]">
-							Desenvolvido por Alura
+							Desenvolvido por Bytebank
 						</h4>
 						<figure className='flex items-center justify-center mt-6 mb-6'>
 							<Image src={"/logo-white.svg"} alt='Logo Branco' width={180} height={35} />
