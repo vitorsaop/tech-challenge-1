@@ -3,47 +3,45 @@ import { Footer } from '@/components/footer';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Services() {
+export default function ParaVoce() {
   return (
     <div className="flex min-h-screen flex-col">
       <HeaderLogado />
         <div className="bg-[#e4e2e2] pt-10 pb-23">
-          <div className="container mx-auto">
+          <div className="container mx-auto">            
             <div className="flex gap-6">
-
-              <div className="grow-1 bg-white p-7 rounded-[12px]">
-                <nav className="flex flex-col space-y-5" aria-label="Navegação principal">
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Portfólio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Conta e extrato</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Produtos de investimento</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Assessoria</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Cartões</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Crédito e consórcio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Câmbio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Home broker</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Seguros</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666]">Bytebank content</Link>
+              <div className="grow-1 bg-white p-6 rounded-[12px]">
+                <nav className="flex flex-col space-y-4" aria-label="Navegação principal">
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Portfólio</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Conta e extrato</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Produtos de investimento</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Assessoria</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Cartões</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Crédito e consórcio</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Câmbio</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Home broker</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Seguros</Link>
+                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Bytebank content</Link>
                 </nav>
               </div>
-
-              <div className="grow-8">
-                
-                <div className="grid grid-cols-2 gap-5 bg-[#CCC] p-9 rounded-[12px] h-70 mb-5">
-                  <section style={{border: "2px solid red"}}>
+              <div className="grow-7">                
+                <div className="grid grid-cols-2 gap-5 bg-[#CCC] p-9 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
+                  <section>
                     <h1 className="text-[28px] color-[#000] font-medium">
                       Bem-vindo, Paulo : )
                       <span className="block text-[16px] color-[#000] font-medium">Quarta-feira, 04/10/2025</span>
                     </h1>
                   </section>
-                  <section className="" style={{border: "1px solid red"}}>
-                    <h2 className="text-[28px] color-[#000] font-medium">Seu saldo:</h2>
-                    <p>Conta corrente: R$ 3.864,70</p>
-                    <p>Conta poupança: R$ 43.864,70</p>
-                    <p>Investimentos: R$ 367.900,76</p>                    
+                  <section>
+                    <h2 className="flex items-center text-[28px] color-[#000] font-medium mb-6">
+                      Seu saldo: <Image src={"/eye.svg"} alt="Eye" width={35} height={35} className="ml-2" />
+                    </h2>
+                    <p className="text-[17px] mb-4"><b>Conta corrente:</b> + R$ 3.864,70</p>    
+                    <p className="text-[17px] mb-4"><b>Conta investimentos:</b> + R$ 643.864,70</p>
+                    <p className="text-[17px]"><b>Lançamentos futuros:</b> - R$ 3.900,76</p>                                          
                   </section>
                 </div>
-
-                <div className="bg-[#CCC] p-9 rounded-[12px] bg-[url('/pixels.svg')] bg-right-top bg-no-repeat">
+                <div className="bg-[#CCC] p-9 rounded-[12px]">
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
                     <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
@@ -72,12 +70,10 @@ export default function Services() {
                     </Link>
                   </section>                  
                 </div>
-
-              </div>
-              
-              <div className="grow-1 bg-white p-7 rounded-[12px]">
+              </div>   
+              <div className="grow-3 bg-white p-7 rounded-[12px]">
                 <section aria-labelledby="extrato-financeiro">                  
-                  <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000] mb-10">Extrato financeiro</h3> 
+                  <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000] mb-10">Extrato financeiro</h3>
 
                   {/* Mês Outubro */}
                   <div className="mb-10">                
@@ -234,9 +230,9 @@ export default function Services() {
                         </span>                        
                       </li>
                     </ul>
-                  </div>
+                  </div>                  
                 </section>
-              </div>    
+              </div>
             </div>
           </div>
         </div>

@@ -11,8 +11,8 @@ export function Header() {
               <Image src={"/logo-green.svg"} alt="Logo ByteBank" width={180} height={32} />
             </Link>
             <nav className="space-x-14" aria-label="Navegação principal">
-              <Link href={"#"} className="text-[#47A138] text-[19px] font-medium hover:underline">Home</Link>
-              <Link href={"#"} className="text-[#47A138] text-[19px] font-medium hover:underline">Para você</Link>
+              <Link href={"/"} className="text-[#47A138] text-[19px] font-medium hover:underline">Home</Link>
+              <Link href={"/paravoce"} className="text-[#47A138] text-[19px] font-medium hover:underline">Para você</Link>
               <Link href={"#"} className="text-[#47A138] text-[19px] font-medium hover:underline">Para empresas</Link>
               <Link href={"#"} className="text-[#47A138] text-[19px] font-medium hover:underline">Bytebank</Link>
               <Link href={"#"} className="text-[#47A138] text-[19px] font-medium hover:underline">Ajuda</Link>
