@@ -11,7 +11,7 @@ export default function Services() {
           <div className="container mx-auto">
             <div className="flex gap-6">
 
-              <div className="grow-1 bg-white p-6 rounded-[12px]">
+              <div className="grow-1 bg-white p-7 rounded-[12px]">
                 <nav className="flex flex-col space-y-5" aria-label="Navegação principal">
                   <Link href={"#"} className="text-[18px] font-medium text-[#666]">Portfólio</Link>
                   <Link href={"#"} className="text-[18px] font-medium text-[#666]">Conta e extrato</Link>
@@ -27,54 +27,63 @@ export default function Services() {
               </div>
 
               <div className="grow-8">
-                <section className="bg-[#CCC] p-6 rounded-[12px] h-100 mb-5">
-                  Leandro
-                </section>
-                <section className="bg-[#CCC] p-6 rounded-[12px] h-100 grid grid-cols-3 gap-5">
+                
+                <div className="grid grid-cols-2 gap-5 bg-[#CCC] p-9 rounded-[12px] h-70 mb-5">
+                  <section style={{border: "2px solid red"}}>
+                    <h1 className="text-[28px] color-[#000] font-medium">
+                      Bem-vindo, Paulo : )
+                      <span className="block text-[16px] color-[#000] font-medium">Quarta-feira, 04/10/2025</span>
+                    </h1>
+                  </section>
+                  <section className="" style={{border: "1px solid red"}}>
+                    <h2 className="text-[28px] color-[#000] font-medium">Seu saldo:</h2>
+                    <p>Conta corrente: R$ 3.864,70</p>
+                    <p>Conta poupança: R$ 43.864,70</p>
+                    <p>Investimentos: R$ 367.900,76</p>                    
+                  </section>
+                </div>
 
-                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                    <Image src={"/emprestimo.svg"} alt="Empréstimo" width={70} height={70} className="mb-3.5" />
-                    Empréstimo
-                  </Link>
-
-                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                    <Image src={"/meus-cartoes.svg"} alt="Cartões" width={70} height={70} className="mb-3.5"/>
-                    Cartões
-                  </Link>
-
-                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                    <Image src={"/doacoes.svg"} alt="Doações" width={70} height={70} className="mb-3.5" />
-                    Doações
-                  </Link>
-
-                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                    <Image src={"/pix.svg"} alt="PIX" width={70} height={70} className="mb-3.5" />
-                    PIX
-                  </Link>
-
-                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                    <Image src={"/seguros.svg"} alt="Seguros" width={70} height={70} className="mb-3.5" />
-                    Seguros
-                  </Link>
-
-                  <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                    <Image src={"/credito-celular.svg"} alt="Crédito celular" width={70} height={70} className="mb-3.5" />
-                    Crédito celular
-                  </Link>
-                  
-                </section>
+                <div className="bg-[#CCC] p-9 rounded-[12px] bg-[url('/pixels.svg')] bg-right-top bg-no-repeat">
+                  <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
+                  <section className="grid grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
+                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                      <Image src={"/emprestimo.svg"} alt="Empréstimo" width={70} height={70} className="mb-3.5" />
+                      Empréstimo
+                    </Link>
+                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                      <Image src={"/meus-cartoes.svg"} alt="Cartões" width={70} height={70} className="mb-3.5"/>
+                      Cartões
+                    </Link>
+                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                      <Image src={"/doacoes.svg"} alt="Doações" width={70} height={70} className="mb-3.5" />
+                      Doações
+                    </Link>
+                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                      <Image src={"/pix.svg"} alt="PIX" width={70} height={70} className="mb-3.5" />
+                      PIX
+                    </Link>
+                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                      <Image src={"/seguros.svg"} alt="Seguros" width={70} height={70} className="mb-3.5" />
+                      Seguros
+                    </Link>
+                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                      <Image src={"/credito-celular.svg"} alt="Crédito celular" width={70} height={70} className="mb-3.5" />
+                      Crédito celular
+                    </Link>
+                  </section>                  
+                </div>
 
               </div>
               
-              <div className="grow-1 bg-white p-6 rounded-[12px]">
+              <div className="grow-1 bg-white p-7 rounded-[12px]">
                 <section aria-labelledby="extrato-financeiro">                  
-                  <h2 id="extrato-financeiro" className="text-[24px] font-medium text-[#000] mb-10">Extrato financeiro</h2> 
+                  <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000] mb-10">Extrato financeiro</h3> 
 
                   {/* Mês Outubro */}
                   <div className="mb-10">                
-                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
+                    <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
                       <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Outubro / 2025
-                    </h3>
+                    </h4>
                     <ul className="text-[16px] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
                         <p className="flex justify-between w-full">
@@ -111,9 +120,9 @@ export default function Services() {
 
                   {/* Mês Setembro */}
                   <div className="mb-10">
-                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
+                    <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
                       <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Setembro / 2025
-                    </h3>
+                    </h4>
                     <ul className="text-[16px] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
                         <p className="flex justify-between w-full">
@@ -170,9 +179,9 @@ export default function Services() {
 
                   {/* Mês Agosto */}
                   <div className="mb-10">                    
-                    <h3 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
+                    <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
                       <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Agosto / 2025
-                    </h3>
+                    </h4>
                     <ul className="text-[16px] text-right">                      
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
                         <p className="flex justify-between w-full">
