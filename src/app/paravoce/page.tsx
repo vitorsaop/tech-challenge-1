@@ -73,8 +73,17 @@ export default function ParaVoce() {
               </div>   
               <div className="grow-3 bg-white p-7 rounded-[12px]">
                 <section aria-labelledby="extrato-financeiro">                  
-                  <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000] mb-10">Extrato financeiro</h3>
-
+                  <div className="flex justify-between items-center mb-10">
+                    <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000]">Extrato financeiro</h3>
+                    {/* Botão apara nova transacao */}
+                    <Link 
+                      href={"/paravoce/nova-transacao"}
+                      className="bg-[#47A138] text-white px-4 py-2 rounded-md hover:bg-[#3a8a2e] text-sm font-medium transition-colors"
+                    >
+                      + Nova Transação
+                    </Link>
+                  </div>
+                  
                   {/* Mês Outubro */}
                   <div className="mb-10">                
                     <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
