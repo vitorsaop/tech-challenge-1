@@ -45,27 +45,63 @@ export default function ParaVoce() {
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
                     <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/emprestimo.svg"} alt="Empréstimo" width={70} height={70} className="mb-3.5" />
+                      <Image 
+                        src={"/emprestimo.svg"} 
+                        alt="Empréstimo" 
+                        width={70} 
+                        height={70} 
+                        className="mb-3.5" 
+                      />
                       Empréstimo
                     </Link>
                     <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/meus-cartoes.svg"} alt="Cartões" width={70} height={70} className="mb-3.5"/>
+                      <Image 
+                        src={"/meus-cartoes.svg"} 
+                        alt="Cartões" 
+                        width={70} 
+                        height={70} 
+                        className="mb-3.5"
+                      />
                       Cartões
                     </Link>
                     <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/doacoes.svg"} alt="Doações" width={70} height={70} className="mb-3.5" />
+                      <Image 
+                        src={"/doacoes.svg"} 
+                        alt="Doações" 
+                        width={70} 
+                        height={70} 
+                        className="mb-3.5" 
+                      />
                       Doações
                     </Link>
                     <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/pix.svg"} alt="PIX" width={70} height={70} className="mb-3.5" />
+                      <Image 
+                        src={"/pix.svg"} 
+                        alt="PIX" 
+                        width={70} 
+                        height={70} 
+                        className="mb-3.5" 
+                      />
                       PIX
                     </Link>
                     <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/seguros.svg"} alt="Seguros" width={70} height={70} className="mb-3.5" />
+                      <Image 
+                        src={"/seguros.svg"} 
+                        alt="Seguros" 
+                        width={70} 
+                        height={70} 
+                        className="mb-3.5" 
+                      />
                       Seguros
                     </Link>
                     <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/credito-celular.svg"} alt="Crédito celular" width={70} height={70} className="mb-3.5" />
+                      <Image 
+                        src={"/credito-celular.svg"} 
+                        alt="Crédito celular" 
+                        width={70} 
+                        height={70} 
+                        className="mb-3.5" 
+                      />
                       Crédito celular
                     </Link>
                   </section>                  
