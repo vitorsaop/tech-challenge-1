@@ -72,7 +72,7 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #f44336;
+    border-color: #47A138;
   }
 `;
 
