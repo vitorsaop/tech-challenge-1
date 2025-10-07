@@ -25,7 +25,7 @@ export default function Home() {
           {/* Vantagens */}
           <div>
             <h2 className="mb-10 text-center font-bold text-[30px]">Vantagens do nosso banco:</h2>
-            <div className="grid grid-cols-1 gap-14 md:grid-cols-4">              
+            <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">              
               {vantagensMock.map ( (vantagem) => (
                   <section key={vantagem.id} className="text-center p-4">
                     <figure>

@@ -43,8 +43,8 @@ export function Header() {
               <Link 
                 href={"#"} 
                 className="text-[#47A138] text-[19px] font-medium hover:underline"
-              >
-                Ajuda
+                >
+                  Ajuda
               </Link>
             </nav>            
           </div>
