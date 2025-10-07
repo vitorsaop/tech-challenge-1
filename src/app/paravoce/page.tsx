@@ -229,7 +229,13 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 6.674,90
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5">
