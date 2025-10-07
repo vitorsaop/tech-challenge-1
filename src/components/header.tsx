@@ -19,11 +19,11 @@ export function Header() {
             </nav>            
           </div>
           <div className='flex gap-5 md:grid-cols-2'>            
-            <Link href={"#"} 
+            <Link href={"/cadastro"} 
               className="inline-flex justify-center items-center h-12 text-center rounded-[8px] bg-[#47a138] hover:bg-[#FFF] min-w-[196px] text-[17px] hover:text-[#59b449] transition duration-300" aria-label="Abrir minha conta">
               Abrir minha conta
             </Link>            
-            <Link href={"#"} 
+            <Link href={"/login"} 
               className="inline-flex justify-center items-center h-12 text-center rounded-[8px] bg-transparent hover:bg-[#47a138] border-[2px] border-[#47a138] min-w-[196px] text-[#47a138] hover:text-[#FFF] text-[17px] transition duration-300" aria-label="Já tenho conta">
               Já tenho conta
             </Link>
