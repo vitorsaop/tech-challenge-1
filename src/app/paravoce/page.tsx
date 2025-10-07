@@ -70,7 +70,7 @@ export default function ParaVoce() {
                 </nav>
               </div>
               <div className="grow-7">                
-                <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-9 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
+                <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-8 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
                   <section>
                     <h1 className="text-[28px] color-[#000] font-medium">
                       Bem-vindo, Paulo : )
@@ -86,7 +86,7 @@ export default function ParaVoce() {
                     <p className="text-[17px]"><b>Lançamentos futuros:</b> - R$ 3.900,76</p>                                          
                   </section>
                 </div>
-                <div className="bg-[#CCC] p-9 rounded-[12px]">
+                <div className="bg-[#CCC] p-8 rounded-[12px]">
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
                   {ServicosDisponiveisMock.map ( (servicos) => (
