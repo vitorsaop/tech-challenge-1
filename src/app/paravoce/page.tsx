@@ -67,12 +67,6 @@ export default function ParaVoce() {
                   >
                     Seguros
                   </Link>
-                  <Link 
-                    href={"#"} 
-                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
-                  >
-                    Bytebank content
-                  </Link>
                 </nav>
               </div>
               <div className="grow-7">                
@@ -97,18 +91,18 @@ export default function ParaVoce() {
                   <section className="grid grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
                   {ServicosDisponiveisMock.map ( (servicos) => (
                     <Link key={servicos.id}
-                        href={"/"} 
-                        className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
-                      >
-                        <Image 
-                          src={servicos.imagemUrl} 
-                          alt={servicos.titulo} 
-                          width={70} 
-                          height={70} 
-                          className="mb-3.5" 
-                        />
-                        {servicos.titulo}
-                      </Link>
+                      href={"/"} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                    >
+                      <Image 
+                        src={servicos.imagemUrl} 
+                        alt={servicos.titulo} 
+                        width={70} 
+                        height={70} 
+                        className="mb-3.5" 
+                      />
+                      {servicos.titulo}
+                    </Link>
                     ))
                   }
                   </section>                  

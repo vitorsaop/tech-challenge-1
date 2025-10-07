@@ -82,7 +82,7 @@ const CheckboxContainer = styled.div`
   gap: 8px;
   margin-bottom: 20px;
   margin-top: 10px;
-  font-size: 13px;
+  font-size: 15px;
   color: #333;
 
   a {
