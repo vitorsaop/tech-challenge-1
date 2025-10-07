@@ -60,7 +60,7 @@ export function Footer() {
 						<h4 id="developer-by-bytebank" className="mb-5 text-[20px] font-semibold text-[#47a138] lg:text-center xl:text-center">
 							Desenvolvido por Bytebank
 						</h4>
-						<figure className='flex mt-8 mb-8 lg:justify-center xl:justify-center'>
+						<figure className='flex mt-3 mb-8 lg:justify-center xl:justify-center'>
 							<Image 
 								src={"/logo-white.svg"} 
 								alt="Logo Branco" 
