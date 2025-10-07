@@ -2,6 +2,7 @@ import { HeaderLogado } from '@/components/header-logado';
 import { Footer } from '@/components/footer';
 import Image from 'next/image';
 import Link from 'next/link';
+import ServicosDisponiveisMock from '@/data/servicosdisponiveis.json';
 
 export default function ParaVoce() {
   return (
@@ -94,84 +95,22 @@ export default function ParaVoce() {
                 <div className="bg-[#CCC] p-9 rounded-[12px]">
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
-                    <Link 
-                      href={"/"} 
-                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
-                    >
-                      <Image 
-                        src={"/emprestimo.svg"} 
-                        alt="Empréstimo" 
-                        width={70} 
-                        height={70} 
-                        className="mb-3.5" 
-                      />
-                      Empréstimo
-                    </Link>
-                    <Link 
-                      href={"/"} 
-                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
-                    >
-                      <Image 
-                        src={"/meus-cartoes.svg"} 
-                        alt="Cartões" 
-                        width={70} 
-                        height={70} 
-                        className="mb-3.5"
-                      />
-                      Cartões
-                    </Link>
-                    <Link 
-                      href={"/"} 
-                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
-                    >
-                      <Image 
-                        src={"/doacoes.svg"} 
-                        alt="Doações" 
-                        width={70} 
-                        height={70} 
-                        className="mb-3.5" 
-                      />
-                      Doações
-                    </Link>
-                    <Link 
-                      href={"/"} 
-                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
-                    >
-                      <Image 
-                        src={"/pix.svg"} 
-                        alt="PIX" 
-                        width={70} 
-                        height={70} 
-                        className="mb-3.5" 
-                      />
-                      PIX
-                    </Link>
-                    <Link 
-                      href={"/"} 
-                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
-                    >
-                      <Image 
-                        src={"/seguros.svg"} 
-                        alt="Seguros" 
-                        width={70} 
-                        height={70} 
-                        className="mb-3.5" 
-                      />
-                      Seguros
-                    </Link>
-                    <Link 
-                      href={"/"} 
-                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
-                    >
-                      <Image 
-                        src={"/credito-celular.svg"} 
-                        alt="Crédito celular" 
-                        width={70} 
-                        height={70} 
-                        className="mb-3.5" 
-                      />
-                      Crédito celular
-                    </Link>
+                  {ServicosDisponiveisMock.map ( (servicos) => (
+                    <Link key={servicos.id}
+                        href={"/"} 
+                        className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                      >
+                        <Image 
+                          src={servicos.imagemUrl} 
+                          alt={servicos.titulo} 
+                          width={70} 
+                          height={70} 
+                          className="mb-3.5" 
+                        />
+                        {servicos.titulo}
+                      </Link>
+                    ))
+                  }
                   </section>                  
                 </div>
               </div>   
