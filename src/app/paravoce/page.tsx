@@ -12,16 +12,66 @@ export default function ParaVoce() {
             <div className="flex gap-6">
               <div className="grow-1 bg-white p-6 rounded-[12px]">
                 <nav className="flex flex-col space-y-4" aria-label="Navegação principal">
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Portfólio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Conta e extrato</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Produtos de investimento</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Assessoria</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Cartões</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Crédito e consórcio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Câmbio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Home broker</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Seguros</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Bytebank content</Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Portfólio
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Conta e extrato
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Produtos de investimento
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Assessoria
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Cartões
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Crédito e consórcio
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Câmbio
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Home broker
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Seguros
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Bytebank content
+                  </Link>
                 </nav>
               </div>
               <div className="grow-7">                
@@ -44,7 +94,10 @@ export default function ParaVoce() {
                 <div className="bg-[#CCC] p-9 rounded-[12px]">
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Link 
+                      href={"/"} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                    >
                       <Image 
                         src={"/emprestimo.svg"} 
                         alt="Empréstimo" 
@@ -54,7 +107,10 @@ export default function ParaVoce() {
                       />
                       Empréstimo
                     </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Link 
+                      href={"/"} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                    >
                       <Image 
                         src={"/meus-cartoes.svg"} 
                         alt="Cartões" 
@@ -64,7 +120,10 @@ export default function ParaVoce() {
                       />
                       Cartões
                     </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Link 
+                      href={"/"} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                    >
                       <Image 
                         src={"/doacoes.svg"} 
                         alt="Doações" 
@@ -74,7 +133,10 @@ export default function ParaVoce() {
                       />
                       Doações
                     </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Link 
+                      href={"/"} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                    >
                       <Image 
                         src={"/pix.svg"} 
                         alt="PIX" 
@@ -84,7 +146,10 @@ export default function ParaVoce() {
                       />
                       PIX
                     </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Link 
+                      href={"/"} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                    >
                       <Image 
                         src={"/seguros.svg"} 
                         alt="Seguros" 
@@ -94,7 +159,10 @@ export default function ParaVoce() {
                       />
                       Seguros
                     </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
+                    <Link 
+                      href={"/"} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold"
+                    >
                       <Image 
                         src={"/credito-celular.svg"} 
                         alt="Crédito celular" 
@@ -110,7 +178,12 @@ export default function ParaVoce() {
               <div className="grow-3 bg-white p-7 rounded-[12px]">
                 <section aria-labelledby="extrato-financeiro">                  
                   <div className="flex justify-between items-center mb-10">
-                    <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000]">Extrato financeiro</h3>
+                    <h3 
+                      id="extrato-financeiro" 
+                      className="text-[24px] font-medium text-[#000]"
+                    >
+                      Extrato financeiro
+                    </h3>
                     {/* Botão apara nova transacao */}
                     <Link 
                       href={"/paravoce/nova-transacao"}
@@ -123,7 +196,14 @@ export default function ParaVoce() {
                   {/* Mês Outubro */}
                   <div className="mb-10">                
                     <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
-                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Outubro / 2025
+                      <Image 
+                        src={"/calendario.svg"} 
+                        alt='Calendário' 
+                        width={22} 
+                        height={22} 
+                        className="mr-2" 
+                      />
+                      Outubro / 2025
                     </h4>
                     <ul className="text-[16px] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -162,7 +242,14 @@ export default function ParaVoce() {
                   {/* Mês Setembro */}
                   <div className="mb-10">
                     <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
-                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Setembro / 2025
+                      <Image 
+                        src={"/calendario.svg"} 
+                        alt='Calendário' 
+                        width={22} 
+                        height={22} 
+                        className="mr-2" 
+                      />
+                      Setembro / 2025
                     </h4>
                     <ul className="text-[16px] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -221,7 +308,14 @@ export default function ParaVoce() {
                   {/* Mês Agosto */}
                   <div className="mb-10">                    
                     <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
-                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Agosto / 2025
+                      <Image 
+                        src={"/calendario.svg"} 
+                        alt='Calendário' 
+                        width={22} 
+                        height={22} 
+                        className="mr-2" 
+                      />
+                      Agosto / 2025
                     </h4>
                     <ul className="text-[16px] text-right">                      
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
