@@ -24,7 +24,7 @@ const Form = styled.form`
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 420px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@ const CloseButton = styled.button`
 `;
 
 const Illustration = styled.img`
-  width: 200px;
+  width: 400px;
   height: auto;
   margin-bottom: 20px;
 `;
@@ -52,12 +52,13 @@ const Title = styled.h2`
   margin-bottom: 10px;
   font-size: 1.2rem;
   color: #222;
+  font-weight: bold;
 `;
 
 const Subtitle = styled.p`
   text-align: center;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
   color: #666;
 `;
 
@@ -67,7 +68,7 @@ const Input = styled.input`
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 17px;
 
   &:focus {
     outline: none;
@@ -80,6 +81,7 @@ const CheckboxContainer = styled.div`
   align-items: center;
   gap: 8px;
   margin-bottom: 20px;
+  margin-top: 10px;
   font-size: 13px;
   color: #333;
 
@@ -96,17 +98,17 @@ const CheckboxContainer = styled.div`
 const Button = styled.button<{ disabled: boolean }>`
   width: 100%;
   padding: 12px;
-  background-color: ${(props) => (props.disabled ? '#ccc' : '#f44336')};
+  background-color: ${(props) => (props.disabled ? '#ccc' : '#47A138')};
   color: white;
   border: none;
   border-radius: 6px;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? '#ccc' : '#d32f2f')};
+    background-color: ${(props) => (props.disabled ? '#ccc' : '#3A8A2E')};
   }
 `;
 
@@ -117,9 +119,9 @@ const ErrorMessage = styled.div`
   color: #d32f2f;
   border: 1px solid #d32f2f;
   border-radius: 6px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
 `;
 
 export default function Login() {

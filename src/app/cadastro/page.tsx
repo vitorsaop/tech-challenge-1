@@ -24,7 +24,7 @@ const Form = styled.form`
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 620px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@ const CloseButton = styled.button`
 `;
 
 const Illustration = styled.img`
-  width: 400px;
+  width: 380px;
   height: auto;
   margin-bottom: 20px;
 `;
@@ -81,7 +81,7 @@ const CheckboxContainer = styled.div`
   align-items: flex-start;
   gap: 8px;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 14px;
   color: #333;
 
@@ -91,7 +91,7 @@ const CheckboxContainer = styled.div`
   }
 
   a:hover {
-    color: #1f6313;
+    color: #1F6313;
   }
 `;
 
