@@ -11,11 +11,12 @@ export default function ParaVoce() {
         <div className="bg-[#e4e2e2] pt-10 pb-23">
           <div className="container mx-auto">            
             <div className="flex gap-6">
-              <div className="grow-1 bg-white p-6 rounded-[12px]">
+              
+              <div className="grow-1 hidden lg:block bg-white p-6 rounded-[12px]">
                 <nav className="flex flex-col space-y-4" aria-label="Navegação principal">
                   <Link 
                     href={"#"} 
-                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                    className="text-[17px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
                   >
                     Portfólio
                   </Link>
@@ -69,7 +70,8 @@ export default function ParaVoce() {
                   </Link>
                 </nav>
               </div>
-              <div className="grow-7">                
+
+              <div className="grow-2">                
                 <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-8 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
                   <section>
                     <h1 className="text-[28px] color-[#000] font-medium">
@@ -90,9 +92,10 @@ export default function ParaVoce() {
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
                   {ServicosDisponiveisMock.map ( (servicos) => (
-                    <Link key={servicos.id}
-                      href={"/"} 
-                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold text-center"
+                    <Link 
+                      key={servicos.id}
+                      href={servicos.url} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[19px] font-semibold text-center"
                     >
                       <Image 
                         src={servicos.imagemUrl} 
@@ -107,8 +110,9 @@ export default function ParaVoce() {
                   }
                   </section>                  
                 </div>
-              </div>   
-              <div className="grow-3 bg-white p-7 rounded-[12px]">
+              </div>  
+
+              <div className="grow-4 bg-white p-7 rounded-[12px]">
                 <section aria-labelledby="extrato-financeiro">                  
                   <div className="flex justify-between items-center mb-10">
                     <h3 
@@ -384,6 +388,7 @@ export default function ParaVoce() {
                 </section>
               </div>
             </div>
+
           </div>
         </div>
       <Footer />
