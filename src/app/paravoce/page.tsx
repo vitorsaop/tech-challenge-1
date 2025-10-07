@@ -293,7 +293,13 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[red]">
                           - R$ 2.360,00
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-down.png"} 
+                            alt="Arrow down" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -303,7 +309,13 @@ export default function ParaVoce() {
                         </p>                                    
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 975,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -313,7 +325,13 @@ export default function ParaVoce() {
                         </p>                                 
                         <span className="flex justify-end items-center text-[red]">
                           - R$ 2.150,00
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-down.png"} 
+                            alt="Arrow down" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5">
@@ -323,7 +341,13 @@ export default function ParaVoce() {
                         </p>
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 2.680,75
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                     </ul>
@@ -349,7 +373,13 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 2.360,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -359,7 +389,13 @@ export default function ParaVoce() {
                         </p>                                    
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 9.975,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -369,7 +405,13 @@ export default function ParaVoce() {
                         </p>                                 
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 759,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -379,7 +421,13 @@ export default function ParaVoce() {
                         </p>
                         <span className="flex justify-end items-center text-[red]">
                           - R$ 2.680,75
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-down.png"} 
+                            alt="Arrow down" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5">
@@ -389,7 +437,13 @@ export default function ParaVoce() {
                         </p>
                         <span className="flex justify-end items-center text-[red]">
                           - R$ 2.680,75
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-down.png"} 
+                            alt="Arrow down" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>                        
                       </li>
                     </ul>
