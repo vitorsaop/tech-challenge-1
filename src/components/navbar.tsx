@@ -63,7 +63,7 @@ const Navbar = () => {
         </div>
 
         {/* Links de Navegação (Visível em telas grandes e Oculto em telas pequenas) */}
-        <div className="hidden md:flex xl:space-x-16 lg:space-x-10 md:space-x-7">
+        <div className="hidden md:flex xl:space-x-16 lg:space-x-10 md:space-x-8">
           {navItems.map((item) => (
             <Link 
               key={item.name} 
