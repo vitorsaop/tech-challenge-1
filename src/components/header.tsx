@@ -31,7 +31,7 @@ export function Header() {
               <Navbar />
             </div>            
           </div>
-          <div className="hidden sm:hidden md:hidden lg:block">
+          <div className="hidden sm:hidden md:hidden lg:block ml-7">
             <div className="flex gap-5 md:grid-cols-2">            
               <Link 
                 href={"/cadastro"} 
