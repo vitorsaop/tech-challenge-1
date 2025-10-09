@@ -10,9 +10,10 @@ export default function ParaVoce() {
       <HeaderLogado />
         <div className="bg-[#e4e2e2] pt-10 pb-23">
           <div className="container mx-auto">            
-            <div className="flex gap-6">
+            
+            <div className="gap-6 sm:block md:block lg:flex xl:flex">
               
-              <div className="grow-1 hidden lg:block bg-white p-6 rounded-[12px]">
+              <div className="grow-1 bg-white p-5 rounded-[12px] sm:mb-7">
                 <nav className="flex flex-col space-y-4" aria-label="Navegação principal">
                   <Link 
                     href={"#"} 
@@ -72,7 +73,7 @@ export default function ParaVoce() {
               </div>
 
               <div className="grow-2">                
-                <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-8 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
+                <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-7 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
                   <section>
                     <h1 className="text-[28px] color-[#000] font-medium">
                       Bem-vindo, Paulo : )
@@ -88,7 +89,7 @@ export default function ParaVoce() {
                     <p className="text-[17px]"><b>Lançamentos futuros:</b> - R$ 3.900,76</p>                                          
                   </section>
                 </div>
-                <div className="bg-[#CCC] p-8 rounded-[12px]">
+                <div className="bg-[#CCC] p-7 rounded-[12px] sm:mb-7">
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
                   {ServicosDisponiveisMock.map ( (servicos) => (
@@ -112,7 +113,7 @@ export default function ParaVoce() {
                 </div>
               </div>  
 
-              <div className="grow-4 bg-white p-7 rounded-[12px]">
+              <div className="grow-4 bg-white p-6 rounded-[12px]">
                 <section aria-labelledby="extrato-financeiro">                  
                   <div className="flex justify-between items-center mb-10">
                     <h3 
@@ -222,23 +223,7 @@ export default function ParaVoce() {
                             className="ml-1" 
                           />
                         </span>
-                      </li>
-                      <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        <p className="flex justify-between w-full">
-                          <span className="text-[#a7a7a7]">20/09/2025 - 18:10 hs</span>
-                          <span className="text-[#000]">Transferência</span>
-                        </p>                        
-                        <span className="flex justify-end items-center text-[red]">
-                          - R$ 2.360,00
-                          <Image 
-                            src={"/arrow-down.png"} 
-                            alt="Arrow down" 
-                            width={13} 
-                            height={13} 
-                            className="ml-1" 
-                          />
-                        </span>
-                      </li>
+                      </li>                      
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
                         <p className="flex justify-between w-full">
                           <span className="text-[#a7a7a7]">18/09/2025 - 11:25 hs</span>
@@ -350,23 +335,7 @@ export default function ParaVoce() {
                             className="ml-1" 
                           />
                         </span>
-                      </li>
-                      <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        <p className="flex justify-between w-full">
-                          <span className="text-[#a7a7a7]">05/08/2025 - 07:45 hs</span>
-                          <span className="text-[#000]">PIX</span>
-                        </p>
-                        <span className="flex justify-end items-center text-[red]">
-                          - R$ 2.680,75
-                          <Image 
-                            src={"/arrow-down.png"} 
-                            alt="Arrow down" 
-                            width={13} 
-                            height={13} 
-                            className="ml-1" 
-                          />
-                        </span>
-                      </li>
+                      </li>                      
                       <li className="mb-2.5 pb-2.5">
                         <p className="flex justify-between w-full">
                           <span className="text-[#a7a7a7]">05/08/2025 - 12:54 hs</span>

@@ -5,7 +5,7 @@ export function Footer() {
 	return (
 		<footer className="bg-[#000] pt-9 pb-9 text-white">
 			<div className="container mx-auto">
-				<div className="grid md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+				<div className="grid md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 p-5 gap-8">
 										
 					{/* Serviços */}
 					<section aria-labelledby="services">

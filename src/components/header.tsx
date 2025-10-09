@@ -15,7 +15,7 @@ export function Header() {
                 height={32} 
               />
             </Link>
-            <nav className="space-x-14" aria-label="Navegação principal">
+            <nav className="space-x-13" aria-label="Navegação principal">
               <Link 
                 href={"/"} 
                 className="text-[#47A138] text-[19px] font-medium hover:underline"

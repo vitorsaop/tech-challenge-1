@@ -11,20 +11,22 @@ export default function Home() {
         <div className="container mx-auto">
           
           {/* Banner */}
-          <div className="mb-12 grid grid-cols-[500px_1fr] gap-10">            
-            <section className="flex items-center">
-              <div>
-                <h1 className="font-bold text-[33px] leading-[1.5em]">Experimente mais liberdade no controle da sua vida financeira. Crie sua conta com a gente!</h1>
+          <div className="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 mb-18 gap-14">
+            <section>
+              <div className="flex items-center h-full">
+                <div>
+                  <h1 className="font-bold text-[33px] leading-[1.5em] lg:text-left md:text-center text-center">Experimente mais liberdade no controle da sua vida financeira. Crie sua conta com a gente!</h1>
+                </div>
               </div>
             </section>
             <section>
-              <Image className="mx-auto" src={"/banner-home.svg"} alt="Banner" width={700} height={413} />
+              <Image className="mx-auto" src={"/banner-home.svg"} alt="Banner" width={900} height={450} />
             </section>
           </div>
                     
           {/* Vantagens */}
           <div>
-            <h2 className="mb-10 text-center font-bold text-[30px]">Vantagens do nosso banco:</h2>
+            <h2 className="mb-20 text-center font-bold text-[30px]">Vantagens do nosso banco:</h2>
             <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">              
               {vantagensMock.map ( (vantagem) => (
                   <section key={vantagem.id} className="text-center p-4">
