@@ -29,7 +29,7 @@ const Navbar = () => {
             {isOpen ? (
               // Exemplo de um X (fechar)
               <svg 
-                className="w-6 h-6" 
+                className="w-9 h-9" 
                 fill="none" 
                 stroke="#47A138" 
                 viewBox="0 0 24 24" 
@@ -45,7 +45,7 @@ const Navbar = () => {
             ) : (
               // Exemplo de Hambúrguer (abrir)
               <svg 
-                className="w-6 h-6" 
+                className="w-9 h-9" 
                 fill="none" 
                 stroke="#47A138" 
                 viewBox="0 0 24 24" 
@@ -78,12 +78,12 @@ const Navbar = () => {
 
       {/* Menu Mobile (Visível apenas quando 'isOpen' é true e em telas pequenas) */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
-        <div className="container mt-5">
+        <div className="container mt-4">
           {navItems.map((item) => (
             <Link 
               key={item.name} 
               href={item.href} 
-              className="text-white block py-2 px-4 transition duration-200"
+              className="text-[#47A138] block py-2 text-[19px]"
               onClick={toggleMenu} // Fecha o menu ao clicar no link
             >
               {item.name}

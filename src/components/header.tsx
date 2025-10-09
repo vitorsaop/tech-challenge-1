@@ -8,8 +8,8 @@ export function Header() {
     <header className="flex items-center sticky top-0 z-50 bg-[#000] pt-5 pb-5 text-white">
       <div className="w-full px-10">
         <div className="flex">
-          <div className="flex md:items-center lg:items-center xl:items-center sm:items-start xl:gap-20 lg:gap-9 md:gap-7 xl:justify-start md:justify-between sm:justify-between sm:w-full pr-7">
-            <div>
+          <div className="flex md:items-center lg:items-center xl:items-center sm:items-start xl:gap-20 lg:gap-9 md:gap-7 xl:justify-start md:justify-between sm:justify-between sm:w-full">
+            <div className="md:order-1 sm:order-3">
               <Link href="/" aria-label="ByteBank - Página Inicial">
                 <Image 
                   src={"/logo-green.svg"} 
@@ -27,7 +27,7 @@ export function Header() {
                 />
               </Link>
             </div>
-            <div>
+            <div className="md:order-2 sm:order-1">
               <Navbar />
             </div>            
           </div>
