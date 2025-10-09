@@ -5,10 +5,10 @@ import Navbar from '@/components/navbar';
 
 export function Header() {
   return (
-    <header className="flex items-center sticky top-0 z-50 bg-[#000] shadow-sm h-22 text-white">
+    <header className="flex items-center sticky top-0 z-50 bg-[#000] pt-5 pb-5 text-white">
       <div className="w-full px-10">
-        <div className="flex items-center">
-          <div className="flex items-center xl:gap-20 lg:gap-9 md:gap-7 xl:justify-start md:justify-between sm:justify-between sm:w-full pr-6">
+        <div className="flex">
+          <div className="flex md:items-center lg:items-center xl:items-center sm:items-start xl:gap-20 lg:gap-9 md:gap-7 xl:justify-start md:justify-between sm:justify-between sm:w-full pr-7">
             <div>
               <Link href="/" aria-label="ByteBank - Página Inicial">
                 <Image 

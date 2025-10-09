@@ -8,12 +8,12 @@ export default function ParaVoce() {
   return (
     <div className="flex min-h-screen flex-col">
       <HeaderLogado />
-        <div className="bg-[#e4e2e2] pt-10 pb-23">
+        <div className="bg-[#e4e2e2] pt-10 pb-10 pl-4 pr-4">
           <div className="container mx-auto">            
             
             <div className="gap-6 sm:block md:block lg:flex xl:flex">
               
-              <div className="grow-1 bg-white p-5 rounded-[12px] sm:mb-7">
+              <div className="grow-1 bg-white p-5 rounded-[12px] mb-7">
                 <nav className="flex flex-col space-y-4" aria-label="Navegação principal">
                   <Link 
                     href={"#"} 
@@ -89,7 +89,7 @@ export default function ParaVoce() {
                     <p className="text-[17px]"><b>Lançamentos futuros:</b> - R$ 3.900,76</p>                                          
                   </section>
                 </div>
-                <div className="bg-[#CCC] p-7 rounded-[12px] sm:mb-7">
+                <div className="bg-[#CCC] p-7 rounded-[12px] mb-7">
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
                   <section className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
                   {ServicosDisponiveisMock.map ( (servicos) => (

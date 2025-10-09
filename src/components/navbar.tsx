@@ -78,12 +78,12 @@ const Navbar = () => {
 
       {/* Menu Mobile (Visível apenas quando 'isOpen' é true e em telas pequenas) */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
-        <div className="flex flex-col space-y-2 mt-4">
+        <div className="container mt-5">
           {navItems.map((item) => (
             <Link 
               key={item.name} 
               href={item.href} 
-              className="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200"
+              className="text-white block py-2 px-4 transition duration-200"
               onClick={toggleMenu} // Fecha o menu ao clicar no link
             >
               {item.name}

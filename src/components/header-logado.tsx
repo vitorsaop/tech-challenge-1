@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export function HeaderLogado() {
   return (
-    <div className="flex items-center sticky top-0 z-50 bg-[#000] h-22 text-white">
+    <div className="flex items-center sticky top-0 z-50 bg-[#000] h-27 text-white">
       <div className="w-full px-10">
         <div className="flex items-center justify-between">
           <div className="items-center flex gap-18">
