@@ -11,7 +11,7 @@ export function HeaderLogado() {
               <Image 
                 src={"/logo-green.svg"} 
                 alt="Logo ByteBank" 
-                width={180} 
+                width={170} 
                 height={32} 
               />
             </Link>
