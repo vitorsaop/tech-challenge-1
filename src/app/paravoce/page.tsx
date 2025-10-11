@@ -2,30 +2,78 @@ import { HeaderLogado } from '@/components/header-logado';
 import { Footer } from '@/components/footer';
 import Image from 'next/image';
 import Link from 'next/link';
+import ServicosDisponiveisMock from '@/data/servicosdisponiveis.json';
 
 export default function ParaVoce() {
   return (
     <div className="flex min-h-screen flex-col">
       <HeaderLogado />
-        <div className="bg-[#e4e2e2] pt-10 pb-23">
+        <div className="bg-[#e4e2e2] pt-10 pb-10 pl-4 pr-4">
           <div className="container mx-auto">            
-            <div className="flex gap-6">
-              <div className="grow-1 bg-white p-6 rounded-[12px]">
+            
+            <div className="gap-6 sm:block md:block lg:flex xl:flex">
+              
+              <div className="grow-1 bg-white p-5 rounded-[12px] mb-7">
                 <nav className="flex flex-col space-y-4" aria-label="Navegação principal">
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Portfólio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Conta e extrato</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Produtos de investimento</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Assessoria</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Cartões</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Crédito e consórcio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Câmbio</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Home broker</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Seguros</Link>
-                  <Link href={"#"} className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">Bytebank content</Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[17px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Portfólio
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Conta e extrato
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Produtos de investimento
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Assessoria
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Cartões
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Crédito e consórcio
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Câmbio
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Home broker
+                  </Link>
+                  <Link 
+                    href={"#"} 
+                    className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5"
+                  >
+                    Seguros
+                  </Link>
                 </nav>
               </div>
-              <div className="grow-7">                
-                <div className="grid grid-cols-2 gap-5 bg-[#CCC] p-9 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
+
+              <div className="grow-2">                
+                <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-7 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
                   <section>
                     <h1 className="text-[28px] color-[#000] font-medium">
                       Bem-vindo, Paulo : )
@@ -41,40 +89,39 @@ export default function ParaVoce() {
                     <p className="text-[17px]"><b>Lançamentos futuros:</b> - R$ 3.900,76</p>                                          
                   </section>
                 </div>
-                <div className="bg-[#CCC] p-9 rounded-[12px]">
+                <div className="bg-[#CCC] p-7 rounded-[12px] mb-7">
                   <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">Serviços disponíveis para você</h2>
-                  <section className="grid grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/emprestimo.svg"} alt="Empréstimo" width={70} height={70} className="mb-3.5" />
-                      Empréstimo
+                  <section className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5" aria-labelledby="servicos-disponiveis">
+                  {ServicosDisponiveisMock.map ( (servicos) => (
+                    <Link 
+                      key={servicos.id}
+                      href={servicos.url} 
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[19px] font-semibold text-center"
+                    >
+                      <Image 
+                        src={servicos.imagemUrl} 
+                        alt={servicos.titulo} 
+                        width={60} 
+                        height={60} 
+                        className="mb-3.5" 
+                      />
+                      {servicos.titulo}
                     </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/meus-cartoes.svg"} alt="Cartões" width={70} height={70} className="mb-3.5"/>
-                      Cartões
-                    </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/doacoes.svg"} alt="Doações" width={70} height={70} className="mb-3.5" />
-                      Doações
-                    </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/pix.svg"} alt="PIX" width={70} height={70} className="mb-3.5" />
-                      PIX
-                    </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/seguros.svg"} alt="Seguros" width={70} height={70} className="mb-3.5" />
-                      Seguros
-                    </Link>
-                    <Link href={"/"} className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[20px] font-semibold">
-                      <Image src={"/credito-celular.svg"} alt="Crédito celular" width={70} height={70} className="mb-3.5" />
-                      Crédito celular
-                    </Link>
+                    ))
+                  }
                   </section>                  
                 </div>
-              </div>   
-              <div className="grow-3 bg-white p-7 rounded-[12px]">
+              </div>  
+
+              <div className="grow-4 bg-white p-6 rounded-[12px]">
                 <section aria-labelledby="extrato-financeiro">                  
                   <div className="flex justify-between items-center mb-10">
-                    <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000]">Extrato financeiro</h3>
+                    <h3 
+                      id="extrato-financeiro" 
+                      className="text-[24px] font-medium text-[#000]"
+                    >
+                      Extrato financeiro
+                    </h3>
                     {/* Botão apara nova transacao */}
                     <Link 
                       href={"/paravoce/nova-transacao"}
@@ -87,7 +134,14 @@ export default function ParaVoce() {
                   {/* Mês Outubro */}
                   <div className="mb-10">                
                     <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
-                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Outubro / 2025
+                      <Image 
+                        src={"/calendario.svg"} 
+                        alt='Calendário' 
+                        width={22} 
+                        height={22} 
+                        className="mr-2" 
+                      />
+                      Outubro / 2025
                     </h4>
                     <ul className="text-[16px] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -97,7 +151,13 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 8.294,50 
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" /> 
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          /> 
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -107,7 +167,13 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 6.674,90
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5">
@@ -117,7 +183,13 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[red]">
                           - R$ 1.365,86
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-down.png"} 
+                            alt="Arrow down" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                     </ul>
@@ -126,7 +198,14 @@ export default function ParaVoce() {
                   {/* Mês Setembro */}
                   <div className="mb-10">
                     <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
-                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Setembro / 2025
+                      <Image 
+                        src={"/calendario.svg"} 
+                        alt='Calendário' 
+                        width={22} 
+                        height={22} 
+                        className="mr-2" 
+                      />
+                      Setembro / 2025
                     </h4>
                     <ul className="text-[16px] text-right">
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -136,19 +215,15 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 1.100,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
-                      </li>
-                      <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        <p className="flex justify-between w-full">
-                          <span className="text-[#a7a7a7]">20/09/2025 - 18:10 hs</span>
-                          <span className="text-[#000]">Transferência</span>
-                        </p>                        
-                        <span className="flex justify-end items-center text-[red]">
-                          - R$ 2.360,00
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
-                        </span>
-                      </li>
+                      </li>                      
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
                         <p className="flex justify-between w-full">
                           <span className="text-[#a7a7a7]">18/09/2025 - 11:25 hs</span>
@@ -156,7 +231,13 @@ export default function ParaVoce() {
                         </p>                                    
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 975,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -166,7 +247,13 @@ export default function ParaVoce() {
                         </p>                                 
                         <span className="flex justify-end items-center text-[red]">
                           - R$ 2.150,00
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-down.png"} 
+                            alt="Arrow down" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5">
@@ -176,7 +263,13 @@ export default function ParaVoce() {
                         </p>
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 2.680,75
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                     </ul>
@@ -185,7 +278,14 @@ export default function ParaVoce() {
                   {/* Mês Agosto */}
                   <div className="mb-10">                    
                     <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
-                      <Image src={"/calendario.svg"} alt='Calendário' width={22} height={22} className="mr-2" />Agosto / 2025
+                      <Image 
+                        src={"/calendario.svg"} 
+                        alt='Calendário' 
+                        width={22} 
+                        height={22} 
+                        className="mr-2" 
+                      />
+                      Agosto / 2025
                     </h4>
                     <ul className="text-[16px] text-right">                      
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -195,7 +295,13 @@ export default function ParaVoce() {
                         </p>                        
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 2.360,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -205,7 +311,13 @@ export default function ParaVoce() {
                         </p>                                    
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 9.975,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
                       </li>
                       <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
@@ -215,19 +327,15 @@ export default function ParaVoce() {
                         </p>                                 
                         <span className="flex justify-end items-center text-[green]">
                           + R$ 759,00
-                          <Image src={"/arrow-up.png"} alt="Arrow up" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-up.png"} 
+                            alt="Arrow up" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>
-                      </li>
-                      <li className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
-                        <p className="flex justify-between w-full">
-                          <span className="text-[#a7a7a7]">05/08/2025 - 07:45 hs</span>
-                          <span className="text-[#000]">PIX</span>
-                        </p>
-                        <span className="flex justify-end items-center text-[red]">
-                          - R$ 2.680,75
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
-                        </span>
-                      </li>
+                      </li>                      
                       <li className="mb-2.5 pb-2.5">
                         <p className="flex justify-between w-full">
                           <span className="text-[#a7a7a7]">05/08/2025 - 12:54 hs</span>
@@ -235,7 +343,13 @@ export default function ParaVoce() {
                         </p>
                         <span className="flex justify-end items-center text-[red]">
                           - R$ 2.680,75
-                          <Image src={"/arrow-down.png"} alt="Arrow down" width={13} height={13} className="ml-1" />
+                          <Image 
+                            src={"/arrow-down.png"} 
+                            alt="Arrow down" 
+                            width={13} 
+                            height={13} 
+                            className="ml-1" 
+                          />
                         </span>                        
                       </li>
                     </ul>
@@ -243,6 +357,7 @@ export default function ParaVoce() {
                 </section>
               </div>
             </div>
+
           </div>
         </div>
       <Footer />

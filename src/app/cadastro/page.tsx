@@ -24,7 +24,7 @@ const Form = styled.form`
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 420px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@ const CloseButton = styled.button`
 `;
 
 const Illustration = styled.img`
-  width: 200px;
+  width: 380px;
   height: auto;
   margin-bottom: 20px;
 `;
@@ -52,11 +52,12 @@ const Title = styled.h2`
   margin-bottom: 10px;
   font-size: 1.2rem;
   color: #222;
+  font-weight: bold;
 `;
 
 const Subtitle = styled.p`
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin-bottom: 25px;
   color: #666;
 `;
@@ -67,11 +68,11 @@ const Input = styled.input`
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 17px;
 
   &:focus {
     outline: none;
-    border-color: #f44336;
+    border-color: #47A138;
   }
 `;
 
@@ -80,33 +81,34 @@ const CheckboxContainer = styled.div`
   align-items: flex-start;
   gap: 8px;
   margin-bottom: 20px;
-  font-size: 13px;
+  margin-top: 10px;
+  font-size: 15px;
   color: #333;
 
   a {
-    color: #f44336;
-    text-decoration: none;
+    color: #47A138;
+    text-decoration: underline;
   }
 
   a:hover {
-    text-decoration: underline;
+    color: #1F6313;
   }
 `;
 
 const Button = styled.button<{ disabled: boolean }>`
   width: 100%;
   padding: 12px;
-  background-color: ${(props) => (props.disabled ? '#ccc' : '#f44336')};
+  background-color: ${(props) => (props.disabled ? '#CCC' : '#47A138')};
   color: white;
   border: none;
   border-radius: 6px;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? '#ccc' : '#d32f2f')};
+    background-color: ${(props) => (props.disabled ? '#CCC' : '#3A8A2E')};
   }
 `;
 
