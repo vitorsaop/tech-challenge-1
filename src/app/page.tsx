@@ -25,7 +25,7 @@ export default function Home() {
             </section>
           </div>
 
-          <div className="sm:block md:block lg:hidden mb-20 pl-4 pr-4">
+          <div className="sm:block md:block lg:hidden mb-18 pl-4 pr-4">
             <div className="flex gap-5 md:grid-cols-2">            
               <Link 
                 href={"/cadastro"} 
