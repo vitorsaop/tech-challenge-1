@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/navbar';
 
+
 export function Header() {
   return (
     <header className="flex items-center sticky top-0 z-50 bg-[#000] pt-5 pb-5 text-white">
