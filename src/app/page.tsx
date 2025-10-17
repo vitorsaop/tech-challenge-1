@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import vantagensMock from '@/data/vantagens.json';
 
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
