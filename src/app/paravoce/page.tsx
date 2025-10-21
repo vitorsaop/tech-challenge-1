@@ -87,7 +87,7 @@ export default function ParaVoce() {
                   {ServicosDisponiveisMock.map ( (servicos) => (
                     <Link 
                       key={servicos.id}
-                      href={servicos.url} 
+                      href="#" 
                       className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[19px] font-semibold text-center"
                     >
                       <Image 
