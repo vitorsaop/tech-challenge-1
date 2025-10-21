@@ -2,6 +2,7 @@
 import { useMemo, useEffect, useState } from "react";
 import { HeaderLogado } from '@/components/header-logado';
 import { Footer } from '@/components/footer';
+import ShowHideValue from '@/components/show-hide';
 import Image from 'next/image';
 import Link from 'next/link';
 import ServicosDisponiveisMock from '@/data/servicosdisponiveis.json';
@@ -67,17 +68,17 @@ export default function ParaVoce() {
                   <section>
                     <h1 className="text-[28px] color-[#000] font-medium">
                       Bem-vindo, Paulo : )
-                      <span className="block text-[16px] color-[#000] font-medium">Quarta-feira, 04/10/2025</span>
+                      <span className="block text-[16px] color-[#000] font-medium">Quarta-feira, 04/10/2025.</span>
                     </h1>
                   </section>
                   <section>
                     <h2 className="flex items-center text-[28px] color-[#000] font-medium mb-5">
-                      Seu saldo: <Image src={"/eye.svg"} alt="Eye" width={35} height={35} className="ml-2" />
+                      Seu saldo: 
                     </h2>
-                    <p className="text-[18px]">
+                    <div className="text-[18px]">
                       <b>Conta corrente:</b> 
-                      <span className="block text-[27px] mt-1">R$ 3.864,70</span>
-                    </p>                                            
+                      <ShowHideValue value="12.350,45" />                      
+                    </div>                                            
                   </section>
                 </div>
                 <div className="bg-[#CCC] p-7 rounded-[12px] mb-7">
