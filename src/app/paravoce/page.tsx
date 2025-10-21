@@ -71,12 +71,13 @@ export default function ParaVoce() {
                     </h1>
                   </section>
                   <section>
-                    <h2 className="flex items-center text-[28px] color-[#000] font-medium mb-6">
+                    <h2 className="flex items-center text-[28px] color-[#000] font-medium mb-5">
                       Seu saldo: <Image src={"/eye.svg"} alt="Eye" width={35} height={35} className="ml-2" />
                     </h2>
-                    <p className="text-[17px] mb-4"><b>Conta corrente:</b> + R$ 3.864,70</p>    
-                    <p className="text-[17px] mb-4"><b>Conta investimentos:</b> + R$ 643.864,70</p>
-                    <p className="text-[17px]"><b>Lançamentos futuros:</b> - R$ 3.900,76</p>                                          
+                    <p className="text-[18px]">
+                      <b>Conta corrente:</b> 
+                      <span className="block text-[27px] mt-1">R$ 3.864,70</span>
+                    </p>                                            
                   </section>
                 </div>
                 <div className="bg-[#CCC] p-7 rounded-[12px] mb-7">
@@ -117,7 +118,7 @@ export default function ParaVoce() {
                   </div>
                   {transacoesPorMes.map(([mesAno, transacoes]) => (
                     <div className="mb-10" key={mesAno}>
-                      <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
+                      <h4 className="flex justify-end items-center text-[17px] font-semibold text-[#000] mb-6 mt-3 text-right">
                         <Image
                           src={"/calendario.svg"}
                           alt="Calendário"
@@ -134,7 +135,7 @@ export default function ParaVoce() {
                             <li key={t.id} className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
                               <p className="flex justify-between w-full">
                                 <span className="text-[#a7a7a7]">{formatarData(t.data)}</span>
-                                <span className="text-[#000]">{t.tipo}</span>
+                                <span className="text-[#000] font-semibold">{t.tipo}</span>
                               </p>
                               <span className={`flex justify-end items-center ${t.valor > 0 ? "text-[green]" : "text-[red]"}`}>
                                 {t.valor > 0 ? "+" : "-"} R$ {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
