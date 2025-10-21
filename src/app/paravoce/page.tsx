@@ -2,7 +2,9 @@
 import { useMemo, useEffect, useState } from "react";
 import { HeaderLogado } from '@/components/header-logado';
 import { Footer } from '@/components/footer';
-import ShowHideValue from '@/components/show-hide';
+import ToggleEyeButton from "@/components/ToggleEyeButton";
+import BalanceCard from "@/components/BalanceCard";
+import { useBalanceVisibility } from "@/context/BalanceVisibilityContext";
 import Image from 'next/image';
 import Link from 'next/link';
 import ServicosDisponiveisMock from '@/data/servicosdisponiveis.json';
@@ -14,8 +16,10 @@ type Transacao = {
   data: string;
 };
 
-export default function ParaVoce() {
+export default function ParaVoce({ t }: { t: { valor: number } }) {
+
   const [transacoes, setTransacoes] = useState<Transacao[]>([]);
+  const { showBalance } = useBalanceVisibility();
 
   useEffect(() => {
     fetch("/api/transacoes")
@@ -66,18 +70,18 @@ export default function ParaVoce() {
               <div className="grow-2">                
                 <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-7 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
                   <section>
-                    <h1 className="text-[28px] color-[#000] font-medium">
+                    <h1 className="text-[26px] color-[#000] font-medium">
                       Bem-vindo, Paulo : )
                       <span className="block text-[16px] color-[#000] font-medium">Quarta-feira, 04/10/2025.</span>
                     </h1>
                   </section>
                   <section>
-                    <h2 className="flex items-center text-[28px] color-[#000] font-medium mb-5">
-                      Seu saldo: 
+                    <h2 className="flex items-center text-[26px] color-[#000] font-medium mb-5">
+                      Seu saldo: <ToggleEyeButton />
                     </h2>
                     <div className="text-[18px]">
                       <b>Conta corrente:</b> 
-                      <ShowHideValue value="12.350,45" />                      
+                      <BalanceCard value={138529.21} />                   
                     </div>                                            
                   </section>
                 </div>
@@ -138,8 +142,14 @@ export default function ParaVoce() {
                                 <span className="text-[#a7a7a7]">{formatarData(t.data)}</span>
                                 <span className="text-[#000] font-semibold">{t.tipo}</span>
                               </p>
-                              <span className={`flex justify-end items-center ${t.valor > 0 ? "text-[green]" : "text-[red]"}`}>
-                                {t.valor > 0 ? "+" : "-"} R$ {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                              <span className={`flex justify-end text-[17px] font-semibold items-center ${t.valor > 0 ? "text-[green]" : "text-[red]"}`}>
+                                {showBalance ? (
+                                  <>
+                                    {t.valor > 0 ? "+" : "-"} R$ {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                  </>
+                                ) : (
+                                  "••••••••••"
+                                )}                               
                                 <Image
                                   src={t.valor > 0 ? "/arrow-up.png" : "/arrow-down.png"}
                                   alt={t.valor > 0 ? "Arrow up" : "Arrow down"}
