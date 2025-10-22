@@ -2,6 +2,9 @@
 import { useMemo, useEffect, useState } from "react";
 import { HeaderLogado } from '@/components/header-logado';
 import { Footer } from '@/components/footer';
+import ToggleEyeButton from "@/components/ToggleEyeButton";
+import BalanceCard from "@/components/BalanceCard";
+import { useBalanceVisibility } from "@/context/BalanceVisibilityContext";
 import Image from 'next/image';
 import Link from 'next/link';
 import ServicosDisponiveisMock from '@/data/servicosdisponiveis.json';
@@ -13,8 +16,10 @@ type Transacao = {
   data: string;
 };
 
-export default function ParaVoce() {
+export default function ParaVoce({ t }: { t: { valor: number } }) {
+
   const [transacoes, setTransacoes] = useState<Transacao[]>([]);
+  const { showBalance } = useBalanceVisibility();
 
   useEffect(() => {
     fetch("/api/transacoes")
@@ -65,18 +70,19 @@ export default function ParaVoce() {
               <div className="grow-2">                
                 <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-7 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
                   <section>
-                    <h1 className="text-[28px] color-[#000] font-medium">
+                    <h1 className="text-[26px] color-[#000] font-medium">
                       Bem-vindo, Paulo : )
-                      <span className="block text-[16px] color-[#000] font-medium">Quarta-feira, 04/10/2025</span>
+                      <span className="block text-[16px] color-[#000] font-medium">Quarta-feira, 04/10/2025.</span>
                     </h1>
                   </section>
                   <section>
-                    <h2 className="flex items-center text-[28px] color-[#000] font-medium mb-6">
-                      Seu saldo: <Image src={"/eye.svg"} alt="Eye" width={35} height={35} className="ml-2" />
+                    <h2 className="flex items-center text-[26px] color-[#000] font-medium mb-5">
+                      Seu saldo: <ToggleEyeButton />
                     </h2>
-                    <p className="text-[17px] mb-4"><b>Conta corrente:</b> + R$ 3.864,70</p>    
-                    <p className="text-[17px] mb-4"><b>Conta investimentos:</b> + R$ 643.864,70</p>
-                    <p className="text-[17px]"><b>Lançamentos futuros:</b> - R$ 3.900,76</p>                                          
+                    <div className="text-[18px]">
+                      <b>Conta corrente:</b> 
+                      <BalanceCard value={138529.21} />                   
+                    </div>                                            
                   </section>
                 </div>
                 <div className="bg-[#CCC] p-7 rounded-[12px] mb-7">
@@ -85,7 +91,7 @@ export default function ParaVoce() {
                   {ServicosDisponiveisMock.map ( (servicos) => (
                     <Link 
                       key={servicos.id}
-                      href={servicos.url} 
+                      href="#" 
                       className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[19px] font-semibold text-center"
                     >
                       <Image 
@@ -117,7 +123,7 @@ export default function ParaVoce() {
                   </div>
                   {transacoesPorMes.map(([mesAno, transacoes]) => (
                     <div className="mb-10" key={mesAno}>
-                      <h4 className="flex justify-end items-center text-[17px] font-bold text-[#000] mb-6 mt-3 text-right">
+                      <h4 className="flex justify-end items-center text-[17px] font-semibold text-[#000] mb-6 mt-3 text-right">
                         <Image
                           src={"/calendario.svg"}
                           alt="Calendário"
@@ -134,10 +140,16 @@ export default function ParaVoce() {
                             <li key={t.id} className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
                               <p className="flex justify-between w-full">
                                 <span className="text-[#a7a7a7]">{formatarData(t.data)}</span>
-                                <span className="text-[#000]">{t.tipo}</span>
+                                <span className="text-[#000] font-semibold">{t.tipo}</span>
                               </p>
-                              <span className={`flex justify-end items-center ${t.valor > 0 ? "text-[green]" : "text-[red]"}`}>
-                                {t.valor > 0 ? "+" : "-"} R$ {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                              <span className={`flex justify-end text-[17px] font-semibold items-center ${t.valor > 0 ? "text-[green]" : "text-[red]"}`}>
+                                {showBalance ? (
+                                  <>
+                                    {t.valor > 0 ? "+" : "-"} R$ {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                  </>
+                                ) : (
+                                  "••••••••••"
+                                )}                               
                                 <Image
                                   src={t.valor > 0 ? "/arrow-up.png" : "/arrow-down.png"}
                                   alt={t.valor > 0 ? "Arrow up" : "Arrow down"}
