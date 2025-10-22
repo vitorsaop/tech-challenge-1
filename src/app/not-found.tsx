@@ -9,10 +9,10 @@ export default function NotFoundPage() {
       <Header />
       <div className="bg-gradient-to-b from-[#004D61] to-[#FFF] pt-10 pb-23">
         <div className="container mx-auto text-center pl-5 pr-5">
-          <h1 className="text-[32px] font-bold text-[#000]">
+          <h1 className="text-[33px] font-bold text-[#000]">
             Ops! Não encontramos a página...
           </h1>
-          <p className="text-[18px] font-semibold text-[#000] mt-6 mb-8">
+          <p className="text-[19px] font-semibold text-[#000] mt-6 mb-8">
             E olha que exploramos o universo procurando por ela!
             <br />
             Que tal voltar e tentar novamente?
