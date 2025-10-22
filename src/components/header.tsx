@@ -35,14 +35,47 @@ export function Header() {
             <div className="flex gap-5 md:grid-cols-2">            
               <Link 
                 href={"/cadastro"} 
-                className="inline-flex justify-center items-center h-11 text-center rounded-[8px] bg-[#47a138] hover:bg-[#FFF] min-w-[180px] text-[16px] font-sem hover:text-[#59b449] transition duration-300" 
+                className="
+                  inline-flex 
+                  justify-center 
+                  items-center 
+                  h-11 
+                  text-center 
+                  rounded-[8px] 
+                  bg-[#47a138] 
+                  hover:bg-[#FFF] 
+                  min-w-[180px] 
+                  text-[16px] 
+                  font-semibold 
+                  hover:text-[#59b449] 
+                  transition 
+                  duration-300
+                " 
                 aria-label="Abrir minha conta"
               >
                 Abrir minha conta
               </Link>            
               <Link 
                 href={"/login"} 
-                className="inline-flex justify-center items-center h-11 text-center rounded-[8px] bg-transparent hover:bg-[#47a138] border-[3px] border-[#47a138] min-w-[180px] text-[#47a138] hover:text-[#FFF] text-[16px] font-semibold transition duration-300" 
+                className="
+                  inline-flex 
+                  justify-center 
+                  items-center 
+                  h-11 
+                  text-center 
+                  rounded-[8px] 
+                  bg-transparent 
+                  hover:bg-[#47a138] 
+                  border-[3px] 
+                  border-[#47a138] 
+                  min-w-[180px] 
+                  text-[#47a138] 
+                  hover:text-[#FFF] 
+                  text-[16px] 
+                  font-semibold 
+                  transition 
+                  duration-300
+                " 
                 aria-label="Já tenho conta"
                 >
                   Já tenho conta
