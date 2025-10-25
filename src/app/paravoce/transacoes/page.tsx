@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { HeaderLogado } from "@/components/header-logado";
 import { Footer } from "@/components/footer";
+import ConfirmModal from "@/components/ConfirmModal";
+import SuccessModal from "@/components/SuccessModal";
 
 type Conta = {
   id: string;
@@ -14,6 +16,7 @@ type Conta = {
 };
 
 type Transacao = {
+  id: string;
   data: string;
   tipo: string;
   valor: number;
@@ -39,6 +42,9 @@ function agruparPorMes(transacoes: Transacao[]) {
 export default function TodasTransacoesPage() {
   const [transacoes, setTransacoes] = useState<Transacao[]>([]);
   const [expandida, setExpandida] = useState<string | null>(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [transacaoToDelete, setTransacaoToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/transacoes")
@@ -76,10 +82,31 @@ export default function TodasTransacoesPage() {
     return conta.numero;
   };
 
-  // O delete local só remove da tela, não da API (mock)
-  const handleDelete = (id: string) => {
-    if (confirm("Tem certeza que deseja deletar esta transação?")) {
-      setTransacoes(transacoes.filter(t => t.id !== id));
+  const handleDelete = async (id: string) => {
+    setTransacaoToDelete(id);
+    setShowConfirmModal(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!transacaoToDelete) return;
+
+    try {
+      const response = await fetch(`/api/transacoes?id=${transacaoToDelete}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        setTransacoes(transacoes.filter(t => t.id !== transacaoToDelete));
+        setShowSuccessModal(true);
+      } else {
+        const errorData = await response.json();
+        alert(`Erro ao deletar transação: ${errorData.error}`);
+      }
+    } catch (error) {
+      console.error("Erro ao deletar transação:", error);
+      alert("Erro ao deletar transação. Tente novamente.");
+    } finally {
+      setTransacaoToDelete(null);
     }
   };
 
@@ -228,6 +255,26 @@ export default function TodasTransacoesPage() {
         </div>
       </main>
       <Footer />
+
+      <ConfirmModal
+        isOpen={showConfirmModal}
+        onClose={() => setShowConfirmModal(false)}
+        onConfirm={confirmDelete}
+        title="Confirmar Exclusão"
+        message="Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita."
+        confirmText="Deletar"
+        cancelText="Cancelar"
+        type="error"
+      />
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Sucesso!"
+        message="Transação deletada com sucesso!"
+        buttonText="OK"
+      />
+
       <style>{`
         .animate-fade-in {
           animation: fadeIn .25s;
