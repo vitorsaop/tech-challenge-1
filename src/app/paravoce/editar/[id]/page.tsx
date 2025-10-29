@@ -1,6 +1,6 @@
 "use client";
 import { Footer } from "@/components/Footer";
-import { HeaderLogado } from "@/components/header-logado";
+import { HeaderAuthenticated } from "@/components/HeaderAuthenticated";
 import SuccessModal from "@/components/SuccessModal";
 import { TipoTransacao } from "@/types/transacao";
 import { useParams, useRouter } from "next/navigation";
@@ -87,7 +87,7 @@ export default function EditarTransacaoPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen flex-col">
-        <HeaderLogado />
+        <HeaderAuthenticated />
         <div className="bg-[#e4e2e2] flex-1 flex items-center justify-center">
           <div className="bg-white p-8 rounded-[12px] shadow text-center">
             <h1 className="text-2xl font-bold mb-4">Carregando...</h1>
@@ -101,7 +101,7 @@ export default function EditarTransacaoPage() {
   if (!transacao) {
     return (
       <div className="flex min-h-screen flex-col">
-        <HeaderLogado />
+        <HeaderAuthenticated />
         <div className="bg-[#e4e2e2] flex-1 flex items-center justify-center">
           <div className="bg-white p-8 rounded-[12px] shadow text-center">
             <h1 className="text-2xl font-bold mb-4">
@@ -170,7 +170,7 @@ export default function EditarTransacaoPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <HeaderLogado />
+      <HeaderAuthenticated />
       <div className="bg-[#e4e2e2] pt-10 pb-10 flex-1">
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
