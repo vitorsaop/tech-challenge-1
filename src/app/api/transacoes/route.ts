@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { TipoTransacao, Conta, Transacao } from '@/types/transacao';
 
-// Mock contas para simulação
 const contasMock: Conta[] = [
   {
     id: '1',
@@ -25,7 +24,6 @@ const contasMock: Conta[] = [
   }
 ];
 
-// Mock database de transações
 let transacoes: Transacao[] = [
   {
     id: '1',
@@ -172,6 +170,125 @@ export async function POST(request: NextRequest) {
     transacoes.push(novaTransacao);
 
     return NextResponse.json(novaTransacao, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Erro interno do servidor' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(request: NextRequest) {
+  try {
+    const body = await request.json();
+    
+    if (!body.id) {
+      return NextResponse.json(
+        { error: 'ID da transação é obrigatório' },
+        { status: 400 }
+      );
+    }
+
+    const transacaoIndex = transacoes.findIndex(t => t.id === body.id);
+    
+    if (transacaoIndex === -1) {
+      return NextResponse.json(
+        { error: 'Transação não encontrada' },
+        { status: 404 }
+      );
+    }
+
+    const transacaoExistente = transacoes[transacaoIndex];
+
+    if (body.tipo && !Object.values(TipoTransacao).includes(body.tipo)) {
+      return NextResponse.json(
+        { error: 'Tipo de transação inválido' },
+        { status: 400 }
+      );
+    }
+
+    const transacaoAtualizada: Transacao = {
+      ...transacaoExistente,
+      tipo: body.tipo || transacaoExistente.tipo,
+      valor: body.valor !== undefined ? parseFloat(body.valor) : transacaoExistente.valor,
+      data: body.data || transacaoExistente.data,
+      descricao: body.descricao !== undefined ? body.descricao : transacaoExistente.descricao,
+    };
+
+    // Atualizar contas se fornecidas
+    if (body.contaOrigem) {
+      const contaOrigem = contasMock.find(c => 
+        c.numero === body.contaOrigem.numero && c.agencia === body.contaOrigem.agencia
+      ) || {
+        id: body.contaOrigem.id || transacaoExistente.contaOrigem?.id || 'temp',
+        numero: body.contaOrigem.numero,
+        agencia: body.contaOrigem.agencia,
+        chavePix: body.contaOrigem.chavePix,
+        saldo: 0
+      };
+      transacaoAtualizada.contaOrigem = contaOrigem;
+    }
+
+    if (body.contaDestino) {
+      const contaDestino = contasMock.find(c => 
+        c.numero === body.contaDestino.numero && c.agencia === body.contaDestino.agencia
+      ) || {
+        id: body.contaDestino.id || transacaoExistente.contaDestino?.id || 'temp',
+        numero: body.contaDestino.numero,
+        agencia: body.contaDestino.agencia,
+        chavePix: body.contaDestino.chavePix,
+        saldo: 0
+      };
+      transacaoAtualizada.contaDestino = contaDestino;
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 200));
+
+    transacoes[transacaoIndex] = transacaoAtualizada;
+
+    return NextResponse.json(transacaoAtualizada, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Erro interno do servidor' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const searchParams = request.nextUrl.searchParams;
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'ID da transação é obrigatório' },
+        { status: 400 }
+      );
+    }
+
+    const transacaoIndex = transacoes.findIndex(t => t.id === id);
+    
+    if (transacaoIndex === -1) {
+      return NextResponse.json(
+        { error: 'Transação não encontrada' },
+        { status: 404 }
+      );
+    }
+
+    const transacaoRemovida = transacoes[transacaoIndex];
+
+    await new Promise(resolve => setTimeout(resolve, 200));
+
+    transacoes.splice(transacaoIndex, 1);
+
+    return NextResponse.json(
+      { 
+        message: 'Transação deletada com sucesso',
+        transacao: transacaoRemovida
+      }, 
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: 'Erro interno do servidor' },
