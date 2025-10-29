@@ -47,9 +47,17 @@ export default function TodasTransacoesPage() {
   const [transacaoToDelete, setTransacaoToDelete] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/transacoes")
-      .then(res => res.json())
-      .then(setTransacoes);
+    const load = () => {
+      fetch("/api/transacoes")
+        .then(res => res.json())
+        .then(setTransacoes);
+    };
+
+    load();
+
+    const handler = () => load();
+    window.addEventListener('transacoes:updated', handler);
+    return () => window.removeEventListener('transacoes:updated', handler);
   }, []);
 
   const { transacoesPorMes, mesesOrdenados } = useMemo(() => {

@@ -6,10 +6,19 @@ import { TipoTransacao, NovaTransacaoForm } from '@/types/transacao';
 
 export default function NovaTransacaoModal() {
   const router = useRouter();
+  const [showToast, setShowToast] = useState(false);
+  const getLocalDateYYYYMMDD = () => {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
+
   const [formData, setFormData] = useState<NovaTransacaoForm>({
     tipo: '',
     valor: '',
-    data: new Date().toISOString().split('T')[0],
+    data: getLocalDateYYYYMMDD(),
     descricao: '',
     chavePix: '',
     agencia: '',
@@ -30,6 +39,14 @@ export default function NovaTransacaoModal() {
     setIsLoading(true);
 
     try {
+      const normalizedValor = parseFloat(
+        String(formData.valor).replace(/\./g, '').replace(',', '.')
+      );
+
+      const normalizedData = formData.data.includes('T')
+        ? formData.data
+        : new Date(formData.data + 'T12:00:00').toISOString();
+
       const response = await fetch('/api/transacoes', {
         method: 'POST',
         headers: {
@@ -37,13 +54,22 @@ export default function NovaTransacaoModal() {
         },
         body: JSON.stringify({
           ...formData,
-          valor: parseFloat(formData.valor.replace(',', '.'))
+          valor: normalizedValor,
+          data: normalizedData,
         }),
       });
 
       if (response.ok) {
-        router.back();
-        // Aqui você pode adicionar um toast de sucesso
+        try {
+          window.dispatchEvent(new CustomEvent('transacoes:updated'));
+        } catch (e) {
+          console.log(e)
+        }
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+          router.back();
+        }, 1200);
       } else {
         const errorData = await response.json();
         alert(errorData.error || 'Erro ao criar transação');
@@ -239,6 +265,13 @@ export default function NovaTransacaoModal() {
             </button>
           </div>
         </form>
+        {showToast && (
+          <div className="fixed top-6 right-6 z-[100]">
+            <div className="bg-green-600 text-white px-4 py-2 rounded shadow-lg">
+              Transação criada com sucesso
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

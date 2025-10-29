@@ -22,9 +22,17 @@ export default function ParaVoce({ t }: { t: { valor: number } }) {
   const { showBalance } = useBalanceVisibility();
 
   useEffect(() => {
-    fetch("/api/transacoes")
-      .then(res => res.json())
-      .then(setTransacoes);
+    const load = () => {
+      fetch("/api/transacoes")
+        .then(res => res.json())
+        .then(setTransacoes);
+    };
+
+    load();
+
+    const handler = () => load();
+    window.addEventListener('transacoes:updated', handler);
+    return () => window.removeEventListener('transacoes:updated', handler);
   }, []);
 
   const transacoesPorMes = useMemo(() => {
