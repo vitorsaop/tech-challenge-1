@@ -1,7 +1,8 @@
 "use client";
 import ConfirmModal from "@/components/ConfirmModal";
 import { Footer } from "@/components/Footer";
-import { HeaderLogado } from "@/components/header-logado";
+import { HeaderAuthenticated } from "@/components/HeaderAuthenticated";
+
 import SuccessModal from "@/components/SuccessModal";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,9 +53,17 @@ export default function TodasTransacoesPage() {
   );
 
   useEffect(() => {
-    fetch("/api/transacoes")
-      .then((res) => res.json())
-      .then(setTransacoes);
+    const load = () => {
+      fetch("/api/transacoes")
+        .then((res) => res.json())
+        .then(setTransacoes);
+    };
+
+    load();
+
+    const handler = () => load();
+    window.addEventListener("transacoes:updated", handler);
+    return () => window.removeEventListener("transacoes:updated", handler);
   }, []);
 
   const { transacoesPorMes, mesesOrdenados } = useMemo(() => {
@@ -138,7 +147,7 @@ export default function TodasTransacoesPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <HeaderLogado />
+      <HeaderAuthenticated />
       <main className="bg-[#e4e2e2] pt-10 pb-10 flex-1">
         <div className="container mx-auto">
           <div className="bg-white p-8 rounded-[12px] shadow">

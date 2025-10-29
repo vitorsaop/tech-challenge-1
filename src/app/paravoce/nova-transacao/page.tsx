@@ -1,17 +1,26 @@
 "use client";
 
 import { Footer } from "@/components/Footer";
-import { HeaderLogado } from "@/components/header-logado";
+import { HeaderAuthenticated } from "@/components/HeaderAuthenticated";
+
 import { NovaTransacaoForm, TipoTransacao } from "@/types/transacao";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function NovaTransacaoPage() {
   const router = useRouter();
+  const getLocalDateYYYYMMDD = () => {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  };
+
   const [formData, setFormData] = useState<NovaTransacaoForm>({
     tipo: "",
     valor: "",
-    data: new Date().toISOString().split("T")[0],
+    data: getLocalDateYYYYMMDD(),
     descricao: "",
     chavePix: "",
     agencia: "",
@@ -32,6 +41,16 @@ export default function NovaTransacaoPage() {
     setIsLoading(true);
 
     try {
+      // normalize currency: remove thousand separators and convert comma to dot
+      const normalizedValor = parseFloat(
+        String(formData.valor).replace(/\./g, "").replace(",", ".")
+      );
+
+      // normalize date: send date-only as ISO at noon to avoid timezone shifts
+      const normalizedData = formData.data.includes("T")
+        ? formData.data
+        : new Date(formData.data + "T12:00:00").toISOString();
+
       const response = await fetch("/api/transacoes", {
         method: "POST",
         headers: {
@@ -39,7 +58,8 @@ export default function NovaTransacaoPage() {
         },
         body: JSON.stringify({
           ...formData,
-          valor: parseFloat(formData.valor.replace(",", ".")),
+          valor: normalizedValor,
+          data: normalizedData,
         }),
       });
 
@@ -89,7 +109,7 @@ export default function NovaTransacaoPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <HeaderLogado />
+      <HeaderAuthenticated />
       <div className="bg-[#e4e2e2] pt-10 pb-23 flex-1">
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg">
