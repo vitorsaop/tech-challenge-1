@@ -1,30 +1,30 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { HeaderLogado } from '@/components/header-logado';
-import { Footer } from '@/components/footer';
-import { TipoTransacao, NovaTransacaoForm } from '@/types/transacao';
+import { Footer } from "@/components/Footer";
+import { HeaderLogado } from "@/components/header-logado";
+import { NovaTransacaoForm, TipoTransacao } from "@/types/transacao";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function NovaTransacaoPage() {
   const router = useRouter();
   const [formData, setFormData] = useState<NovaTransacaoForm>({
-    tipo: '',
-    valor: '',
-    data: new Date().toISOString().split('T')[0],
-    descricao: '',
-    chavePix: '',
-    agencia: '',
-    numeroConta: ''
+    tipo: "",
+    valor: "",
+    data: new Date().toISOString().split("T")[0],
+    descricao: "",
+    chavePix: "",
+    agencia: "",
+    numeroConta: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 
   const tiposTransacao = [
-    { value: TipoTransacao.SAQUE, label: 'Saque' },
-    { value: TipoTransacao.PIX, label: 'PIX' },
-    { value: TipoTransacao.TED, label: 'TED' },
-    { value: TipoTransacao.DEPOSITO, label: 'Depósito' },
-    { value: TipoTransacao.TRANSFERENCIA, label: 'Transferência' }
+    { value: TipoTransacao.SAQUE, label: "Saque" },
+    { value: TipoTransacao.PIX, label: "PIX" },
+    { value: TipoTransacao.TED, label: "TED" },
+    { value: TipoTransacao.DEPOSITO, label: "Depósito" },
+    { value: TipoTransacao.TRANSFERENCIA, label: "Transferência" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,53 +32,55 @@ export default function NovaTransacaoPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/transacoes', {
-        method: 'POST',
+      const response = await fetch("/api/transacoes", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...formData,
-          valor: parseFloat(formData.valor.replace(',', '.'))
+          valor: parseFloat(formData.valor.replace(",", ".")),
         }),
       });
 
       if (response.ok) {
-        router.push('/paravoce');
+        router.push("/paravoce");
       } else {
         const errorData = await response.json();
-        alert(errorData.error || 'Erro ao criar transação');
+        alert(errorData.error || "Erro ao criar transação");
       }
     } catch (error) {
-      console.error('Erro:', error);
-      alert('Erro ao criar transação');
+      console.error("Erro:", error);
+      alert("Erro ao criar transação");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const formatCurrency = (value: string) => {
-    const number = value.replace(/\D/g, '');
-    const formatted = (parseInt(number) / 100).toLocaleString('pt-BR', {
+    const number = value.replace(/\D/g, "");
+    const formatted = (parseInt(number) / 100).toLocaleString("pt-BR", {
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     });
     return formatted;
   };
 
   const handleValorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatCurrency(e.target.value);
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      valor: formatted
+      valor: formatted,
     }));
   };
 
@@ -91,11 +93,16 @@ export default function NovaTransacaoPage() {
       <div className="bg-[#e4e2e2] pt-10 pb-23 flex-1">
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">Nova Transação</h1>
-            
+            <h1 className="text-3xl font-bold text-gray-900 mb-8">
+              Nova Transação
+            </h1>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="tipo" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="tipo"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Tipo de Transação *
                 </label>
                 <select
@@ -107,7 +114,7 @@ export default function NovaTransacaoPage() {
                   className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
                 >
                   <option value="">Selecione o tipo</option>
-                  {tiposTransacao.map(tipo => (
+                  {tiposTransacao.map((tipo) => (
                     <option key={tipo.value} value={tipo.value}>
                       {tipo.label}
                     </option>
@@ -116,7 +123,10 @@ export default function NovaTransacaoPage() {
               </div>
 
               <div>
-                <label htmlFor="valor" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="valor"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Valor (R$) *
                 </label>
                 <input
@@ -133,11 +143,16 @@ export default function NovaTransacaoPage() {
 
               {exigeDestino && (
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">Dados do Destino</h3>
-                  
+                  <h3 className="font-medium text-gray-900">
+                    Dados do Destino
+                  </h3>
+
                   {ehPix ? (
                     <div>
-                      <label htmlFor="chavePix" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="chavePix"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Chave PIX *
                       </label>
                       <input
@@ -154,7 +169,10 @@ export default function NovaTransacaoPage() {
                   ) : (
                     <>
                       <div>
-                        <label htmlFor="agencia" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label
+                          htmlFor="agencia"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
                           Agência *
                         </label>
                         <input
@@ -169,7 +187,10 @@ export default function NovaTransacaoPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="numeroConta" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label
+                          htmlFor="numeroConta"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
                           Número da Conta *
                         </label>
                         <input
@@ -189,7 +210,10 @@ export default function NovaTransacaoPage() {
               )}
 
               <div>
-                <label htmlFor="data" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="data"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Data *
                 </label>
                 <input
@@ -204,7 +228,10 @@ export default function NovaTransacaoPage() {
               </div>
 
               <div>
-                <label htmlFor="descricao" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="descricao"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Descrição (opcional)
                 </label>
                 <input
@@ -231,7 +258,7 @@ export default function NovaTransacaoPage() {
                   disabled={isLoading}
                   className="flex-1 px-6 py-3 bg-[#47A138] text-white rounded-md hover:bg-[#3a8a2e] focus:outline-none focus:ring-2 focus:ring-[#47A138] disabled:opacity-50 text-lg"
                 >
-                  {isLoading ? 'Salvando...' : 'Criar Transação'}
+                  {isLoading ? "Salvando..." : "Criar Transação"}
                 </button>
               </div>
             </form>

@@ -1,7 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Navbar from '@/components/navbar';
-
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "./Navbar";
 
 export function Header() {
   return (
@@ -14,27 +13,27 @@ export function Header() {
             </div>
             <div className="md:order-1 sm:order-2">
               <Link href="/" aria-label="ByteBank - Página Inicial">
-                <Image 
-                  src={"/logo-green.svg"} 
-                  alt="Logo ByteBank" 
-                  width={170} 
+                <Image
+                  src={"/logo-green.svg"}
+                  alt="Logo ByteBank"
+                  width={170}
                   height={32}
-                  className="max-w-none sm:block md:block lg:hidden xl:block" 
+                  className="max-w-none sm:block md:block lg:hidden xl:block"
                 />
-                <Image 
-                  src={"/logo-small.svg"} 
-                  alt="Logo ByteBank - Small" 
-                  width={45} 
+                <Image
+                  src={"/logo-small.svg"}
+                  alt="Logo ByteBank - Small"
+                  width={45}
                   height={45}
-                  className="max-w-none hidden sm:hidden md:hidden lg:block xl:hidden" 
+                  className="max-w-none hidden sm:hidden md:hidden lg:block xl:hidden"
                 />
               </Link>
-            </div>                        
+            </div>
           </div>
           <div className="hidden sm:hidden md:hidden lg:block ml-7">
-            <div className="flex gap-5 md:grid-cols-2">            
-              <Link 
-                href={"/cadastro"} 
+            <div className="flex gap-5 md:grid-cols-2">
+              <Link
+                href={"/cadastro"}
                 className="
                   inline-flex 
                   justify-center 
@@ -50,13 +49,13 @@ export function Header() {
                   hover:text-[#59b449] 
                   transition 
                   duration-300
-                " 
+                "
                 aria-label="Abrir minha conta"
               >
                 Abrir minha conta
-              </Link>            
-              <Link 
-                href={"/login"} 
+              </Link>
+              <Link
+                href={"/login"}
                 className="
                   inline-flex 
                   justify-center 
@@ -75,15 +74,15 @@ export function Header() {
                   font-semibold 
                   transition 
                   duration-300
-                " 
+                "
                 aria-label="Já tenho conta"
-                >
-                  Já tenho conta
+              >
+                Já tenho conta
               </Link>
             </div>
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -1,10 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { Footer } from "@/components/Footer";
 import { HeaderLogado } from "@/components/header-logado";
-import { Footer } from "@/components/footer";
-import { TipoTransacao } from "@/types/transacao";
 import SuccessModal from "@/components/SuccessModal";
+import { TipoTransacao } from "@/types/transacao";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Conta = {
   id: string;
@@ -68,7 +68,12 @@ export default function EditarTransacaoPage() {
 
   const formatarData = (dataISO: string) => {
     const d = new Date(dataISO);
-    return d.toLocaleDateString("pt-BR") + " - " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) + " hs";
+    return (
+      d.toLocaleDateString("pt-BR") +
+      " - " +
+      d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) +
+      " hs"
+    );
   };
 
   const exigeDestino = form.tipo && form.tipo !== TipoTransacao.SAQUE;
@@ -99,7 +104,9 @@ export default function EditarTransacaoPage() {
         <HeaderLogado />
         <div className="bg-[#e4e2e2] flex-1 flex items-center justify-center">
           <div className="bg-white p-8 rounded-[12px] shadow text-center">
-            <h1 className="text-2xl font-bold mb-4">Transação não encontrada</h1>
+            <h1 className="text-2xl font-bold mb-4">
+              Transação não encontrada
+            </h1>
             <button
               onClick={() => router.push("/paravoce/transacoes")}
               className="bg-[#47A138] text-white px-4 py-2 rounded-md hover:bg-[#3a8a2e] mt-4"
@@ -115,7 +122,7 @@ export default function EditarTransacaoPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       const transacaoData = {
         id: transacao?.id,
@@ -154,7 +161,9 @@ export default function EditarTransacaoPage() {
     <span>
       {label}
       {original !== undefined && original !== "" && (
-        <span className="ml-2 text-gray-400 text-xs font-normal">- {original}</span>
+        <span className="ml-2 text-gray-400 text-xs font-normal">
+          - {original}
+        </span>
       )}
     </span>
   );
@@ -164,7 +173,8 @@ export default function EditarTransacaoPage() {
       <HeaderLogado />
       <div className="bg-[#e4e2e2] pt-10 pb-10 flex-1">
         <div className="container mx-auto">
-          <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">{" "}
+          <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
+            {" "}
             <h1 className="text-2xl font-bold mb-6">Editar Transação</h1>
             <form onSubmit={handleSubmit}>
               <div className="space-y-6">
@@ -175,7 +185,9 @@ export default function EditarTransacaoPage() {
                   <select
                     className="border rounded p-3 w-full"
                     value={form.tipo}
-                    onChange={(e) => setForm((f) => ({ ...f, tipo: e.target.value }))}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, tipo: e.target.value }))
+                    }
                     required
                   >
                     <option value="">Selecione</option>
@@ -190,13 +202,20 @@ export default function EditarTransacaoPage() {
 
                 <div>
                   <label className="block text-sm mb-1 font-semibold">
-                    {labelWithOriginal("Valor", transacao.valor?.toLocaleString("pt-BR", { minimumFractionDigits: 2 }))}
+                    {labelWithOriginal(
+                      "Valor",
+                      transacao.valor?.toLocaleString("pt-BR", {
+                        minimumFractionDigits: 2,
+                      })
+                    )}
                   </label>
                   <input
                     className="border rounded p-3 w-full"
                     type="number"
                     value={form.valor}
-                    onChange={(e) => setForm((f) => ({ ...f, valor: e.target.value }))}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, valor: e.target.value }))
+                    }
                     required
                   />
                 </div>
@@ -209,25 +228,37 @@ export default function EditarTransacaoPage() {
                     className="border rounded p-3 w-full"
                     type="datetime-local"
                     value={form.data}
-                    onChange={(e) => setForm((f) => ({ ...f, data: e.target.value }))}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, data: e.target.value }))
+                    }
                     required
                   />
                 </div>
 
                 {exigeDestino && (
                   <div className="space-y-4">
-                    <h3 className="font-medium text-gray-900">Dados do Destino</h3>
-                    
+                    <h3 className="font-medium text-gray-900">
+                      Dados do Destino
+                    </h3>
+
                     {ehPix ? (
                       <div>
                         <label className="block text-sm mb-1 font-semibold">
-                          {labelWithOriginal("Chave Pix", transacao.contaDestino?.chavePix)}
+                          {labelWithOriginal(
+                            "Chave Pix",
+                            transacao.contaDestino?.chavePix
+                          )}
                         </label>
                         <input
                           className="border rounded p-3 w-full"
                           type="text"
                           value={form.contaDestinoChavePix}
-                          onChange={(e) => setForm((f) => ({ ...f, contaDestinoChavePix: e.target.value }))}
+                          onChange={(e) =>
+                            setForm((f) => ({
+                              ...f,
+                              contaDestinoChavePix: e.target.value,
+                            }))
+                          }
                           placeholder="CPF, email, telefone ou chave aleatória"
                           required
                         />
@@ -236,26 +267,42 @@ export default function EditarTransacaoPage() {
                       <>
                         <div>
                           <label className="block text-sm mb-1 font-semibold">
-                            {labelWithOriginal("Conta Destino - Agência", transacao.contaDestino?.agencia)}
+                            {labelWithOriginal(
+                              "Conta Destino - Agência",
+                              transacao.contaDestino?.agencia
+                            )}
                           </label>
                           <input
                             className="border rounded p-3 w-full"
                             type="text"
                             value={form.contaDestinoAgencia}
-                            onChange={(e) => setForm((f) => ({ ...f, contaDestinoAgencia: e.target.value }))}
+                            onChange={(e) =>
+                              setForm((f) => ({
+                                ...f,
+                                contaDestinoAgencia: e.target.value,
+                              }))
+                            }
                             placeholder="0000"
                             required
                           />
                         </div>
                         <div>
                           <label className="block text-sm mb-1 font-semibold">
-                            {labelWithOriginal("Conta Destino - Número", transacao.contaDestino?.numero)}
+                            {labelWithOriginal(
+                              "Conta Destino - Número",
+                              transacao.contaDestino?.numero
+                            )}
                           </label>
                           <input
                             className="border rounded p-3 w-full"
                             type="text"
                             value={form.contaDestinoNumero}
-                            onChange={(e) => setForm((f) => ({ ...f, contaDestinoNumero: e.target.value }))}
+                            onChange={(e) =>
+                              setForm((f) => ({
+                                ...f,
+                                contaDestinoNumero: e.target.value,
+                              }))
+                            }
                             placeholder="000000-0"
                             required
                           />
@@ -272,7 +319,9 @@ export default function EditarTransacaoPage() {
                   <textarea
                     className="border rounded p-3 w-full"
                     value={form.descricao}
-                    onChange={(e) => setForm((f) => ({ ...f, descricao: e.target.value }))}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, descricao: e.target.value }))
+                    }
                     rows={2}
                     placeholder="Descrição da transação"
                   />
@@ -307,6 +356,5 @@ export default function EditarTransacaoPage() {
         buttonText="OK"
       />
     </div>
-
   );
-}  
+}
