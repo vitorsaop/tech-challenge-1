@@ -1,7 +1,8 @@
 "use client";
 import BalanceCard from "@/components/BalanceCard";
 import { Footer } from "@/components/Footer";
-import { HeaderLogado } from "@/components/header-logado";
+import { HeaderAuthenticated } from "@/components/HeaderAuthenticated";
+
 import ToggleEyeButton from "@/components/ToggleEyeButton";
 import { useBalanceVisibility } from "@/context/BalanceVisibilityContext";
 import ServicosDisponiveisMock from "@/data/servicosdisponiveis.json";
@@ -58,7 +59,7 @@ export default function ParaVoce({ t }: { t: { valor: number } }) {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <HeaderLogado />
+      <HeaderAuthenticated />
       <div className="bg-[#e4e2e2] pt-10 pb-10 pl-4 pr-4">
         <div className="container mx-auto">
           <div className="gap-6 sm:block md:block lg:flex xl:flex">
