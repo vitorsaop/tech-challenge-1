@@ -1,7 +1,7 @@
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import Image from 'next/image';
-import Link from 'next/link';
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function NotFoundPage() {
   return (
@@ -17,8 +17,8 @@ export default function NotFoundPage() {
             <br />
             Que tal voltar e tentar novamente?
           </p>
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="
               inline-flex 
               justify-center 
@@ -36,20 +36,20 @@ export default function NotFoundPage() {
               text-[18px] 
               hover:text-[#000] 
               transition duration-300
-            " 
+            "
             aria-label="Voltar ao início"
           >
             Voltar ao início
-          </Link> 
-          <Image 
-            className="mx-auto mt-16" 
-            src={"/not-found.svg"} 
-            alt="Página não encontrada" 
-            width={420} 
-            height={320} 
+          </Link>
+          <Image
+            className="mx-auto mt-16"
+            src={"/not-found.svg"}
+            alt="Página não encontrada"
+            width={420}
+            height={320}
           />
         </div>
-      </div>      
+      </div>
       <Footer />
     </div>
   );

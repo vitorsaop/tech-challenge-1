@@ -1,11 +1,14 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation'; // ✅ import
+import { Button } from "@/components/Button";
+import { Checkbox } from "@/components/Checkbox";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Input } from "@/components/Input";
+import Image from "next/image";
+import { useRouter } from "next/navigation"; // ✅ import
+import React, { useState } from "react";
+import styled from "styled-components";
 
 // Styled components
 const Container = styled.div`
@@ -62,60 +65,10 @@ const Subtitle = styled.p`
   color: #666;
 `;
 
-const Input = styled.input`
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 17px;
-
-  &:focus {
-    outline: none;
-    border-color: #47A138;
-  }
-`;
-
-const CheckboxContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  font-size: 15px;
-  color: #333;
-
-  a {
-    color: #47A138;
-    text-decoration: underline;
-  }
-
-  a:hover {
-    color: #1F6313;
-  }
-`;
-
-const Button = styled.button<{ disabled: boolean }>`
-  width: 100%;
-  padding: 12px;
-  background-color: ${(props) => (props.disabled ? '#CCC' : '#47A138')};
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  font-size: 18px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: ${(props) => (props.disabled ? '#CCC' : '#3A8A2E')};
-  }
-`;
-
 // Componente principal
 export default function Cadastro() {
   const router = useRouter(); // ✅ useRouter dentro do componente
-  const [formData, setFormData] = useState({ nome: '', email: '', senha: '' });
+  const [formData, setFormData] = useState({ nome: "", email: "", senha: "" });
   const [aceite, setAceite] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,7 +78,7 @@ export default function Cadastro() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (aceite) {
-      console.log('Form Data:', formData);
+      console.log("Form Data:", formData);
       // Aqui você pode enviar os dados para a API
     }
   };
@@ -140,11 +93,18 @@ export default function Cadastro() {
       <Container>
         <Form onSubmit={handleSubmit}>
           <CloseButton onClick={handleClose}>
-            <Image src="/close-button.svg" alt="Fechar" width={24} height={24} />
+            <Image
+              src="/close-button.svg"
+              alt="Fechar"
+              width={24}
+              height={24}
+            />
           </CloseButton>
 
           <Illustration src="/ilustracao-login.svg" alt="Criar Conta" />
-          <Title>Preencha os campos abaixo para criar sua conta corrente!</Title>
+          <Title>
+            Preencha os campos abaixo para criar sua conta corrente!
+          </Title>
           <Subtitle>É rápido, fácil e seguro.</Subtitle>
 
           <Input
@@ -172,7 +132,7 @@ export default function Cadastro() {
             required
           />
 
-          <CheckboxContainer>
+          <Checkbox>
             <input
               type="checkbox"
               id="termos"
@@ -180,10 +140,11 @@ export default function Cadastro() {
               onChange={() => setAceite(!aceite)}
             />
             <label htmlFor="termos">
-              Li e estou ciente quanto às condições de tratamento dos meus dados conforme descrito na{' '}
-              <a href="#">Política de Privacidade</a> do banco.
+              Li e estou ciente quanto às condições de tratamento dos meus dados
+              conforme descrito na <a href="#">Política de Privacidade</a> do
+              banco.
             </label>
-          </CheckboxContainer>
+          </Checkbox>
 
           <Button type="submit" disabled={!aceite}>
             Criar conta

@@ -1,11 +1,14 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { Button } from "@/components/Button";
+import { Checkbox } from "@/components/Checkbox";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Input } from "@/components/Input";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import styled from "styled-components";
 
 // Styled components
 const Container = styled.div`
@@ -62,56 +65,6 @@ const Subtitle = styled.p`
   color: #666;
 `;
 
-const Input = styled.input`
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 17px;
-
-  &:focus {
-    outline: none;
-    border-color: #47A138;
-  }
-`;
-
-const CheckboxContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  font-size: 15px;
-  color: #333;
-
-  a {
-    color: #f44336;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-`;
-
-const Button = styled.button<{ disabled: boolean }>`
-  width: 100%;
-  padding: 12px;
-  background-color: ${(props) => (props.disabled ? '#ccc' : '#47A138')};
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  font-size: 18px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: ${(props) => (props.disabled ? '#ccc' : '#3A8A2E')};
-  }
-`;
-
 const ErrorMessage = styled.div`
   width: 100%;
   padding: 12px;
@@ -126,9 +79,9 @@ const ErrorMessage = styled.div`
 
 export default function Login() {
   const router = useRouter();
-  const [formData, setFormData] = useState({ email: '', senha: '' });
+  const [formData, setFormData] = useState({ email: "", senha: "" });
   const [lembrar, setLembrar] = useState(false);
-  const [error, setError] = useState(''); // estado para mensagem de erro
+  const [error, setError] = useState(""); // estado para mensagem de erro
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -138,12 +91,12 @@ export default function Login() {
     e.preventDefault();
 
     // Simulando verificação de login
-    if (formData.email === 'usuario@email.com' && formData.senha === '123456') {
-      console.log('Login bem-sucedido', formData);
-      setError('');
+    if (formData.email === "usuario@email.com" && formData.senha === "123456") {
+      console.log("Login bem-sucedido", formData);
+      setError("");
       // Redireciona ou faz outra ação
     } else {
-      setError('Email ou senha incorretos. Por favor, tente novamente.');
+      setError("Email ou senha incorretos. Por favor, tente novamente.");
     }
   };
 
@@ -157,7 +110,12 @@ export default function Login() {
       <Container>
         <Form onSubmit={handleSubmit}>
           <CloseButton onClick={handleClose}>
-            <Image src="/close-button.svg" alt="Fechar" width={24} height={24} />
+            <Image
+              src="/close-button.svg"
+              alt="Fechar"
+              width={24}
+              height={24}
+            />
           </CloseButton>
 
           <Illustration src="/ilustracao-cadastro.svg" alt="Login" />
@@ -183,7 +141,7 @@ export default function Login() {
             required
           />
 
-          <CheckboxContainer>
+          <Checkbox>
             <input
               type="checkbox"
               id="lembrar"
@@ -191,7 +149,7 @@ export default function Login() {
               onChange={() => setLembrar(!lembrar)}
             />
             <label htmlFor="lembrar">Lembrar-me</label>
-          </CheckboxContainer>
+          </Checkbox>
 
           <Button type="submit" disabled={!formData.email || !formData.senha}>
             Entrar

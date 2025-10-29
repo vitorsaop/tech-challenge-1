@@ -1,11 +1,12 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { HeaderLogado } from "@/components/header-logado";
-import { Footer } from "@/components/footer";
 import ConfirmModal from "@/components/ConfirmModal";
+import { Footer } from "@/components/Footer";
+import { HeaderAuthenticated } from "@/components/HeaderAuthenticated";
+
 import SuccessModal from "@/components/SuccessModal";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
 type Conta = {
   id: string;
@@ -30,7 +31,10 @@ function agruparPorMes(transacoes: Transacao[]) {
   transacoes.forEach((t) => {
     if (!t.data) return;
     const data = new Date(t.data);
-    const mesAno = data.toLocaleString("pt-BR", { month: "long", year: "numeric" });
+    const mesAno = data.toLocaleString("pt-BR", {
+      month: "long",
+      year: "numeric",
+    });
     if (!grupos[mesAno]) {
       grupos[mesAno] = [];
     }
@@ -44,20 +48,22 @@ export default function TodasTransacoesPage() {
   const [expandida, setExpandida] = useState<string | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [transacaoToDelete, setTransacaoToDelete] = useState<string | null>(null);
+  const [transacaoToDelete, setTransacaoToDelete] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     const load = () => {
       fetch("/api/transacoes")
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(setTransacoes);
     };
 
     load();
 
     const handler = () => load();
-    window.addEventListener('transacoes:updated', handler);
-    return () => window.removeEventListener('transacoes:updated', handler);
+    window.addEventListener("transacoes:updated", handler);
+    return () => window.removeEventListener("transacoes:updated", handler);
   }, []);
 
   const { transacoesPorMes, mesesOrdenados } = useMemo(() => {
@@ -65,15 +71,31 @@ export default function TodasTransacoesPage() {
     const meses = Object.keys(grupos);
 
     const mesesParaNumero: { [key: string]: number } = {
-      janeiro: 1, fevereiro: 2, março: 3, abril: 4, maio: 5, junho: 6,
-      julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12,
+      janeiro: 1,
+      fevereiro: 2,
+      março: 3,
+      abril: 4,
+      maio: 5,
+      junho: 6,
+      julho: 7,
+      agosto: 8,
+      setembro: 9,
+      outubro: 10,
+      novembro: 11,
+      dezembro: 12,
     };
 
     meses.sort((a, b) => {
       const [mesA, anoA] = a.split(" de ");
       const [mesB, anoB] = b.split(" de ");
-      const dataA = new Date(Number(anoA), mesesParaNumero[mesA.toLowerCase()] - 1);
-      const dataB = new Date(Number(anoB), mesesParaNumero[mesB.toLowerCase()] - 1);
+      const dataA = new Date(
+        Number(anoA),
+        mesesParaNumero[mesA.toLowerCase()] - 1
+      );
+      const dataB = new Date(
+        Number(anoB),
+        mesesParaNumero[mesB.toLowerCase()] - 1
+      );
       return dataB.getTime() - dataA.getTime();
     });
 
@@ -82,7 +104,12 @@ export default function TodasTransacoesPage() {
 
   const formatarData = (dataISO: string) => {
     const d = new Date(dataISO);
-    return d.toLocaleDateString("pt-BR") + " - " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) + " hs";
+    return (
+      d.toLocaleDateString("pt-BR") +
+      " - " +
+      d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) +
+      " hs"
+    );
   };
 
   const formatarConta = (conta?: Conta) => {
@@ -104,7 +131,7 @@ export default function TodasTransacoesPage() {
       });
 
       if (response.ok) {
-        setTransacoes(transacoes.filter(t => t.id !== transacaoToDelete));
+        setTransacoes(transacoes.filter((t) => t.id !== transacaoToDelete));
         setShowSuccessModal(true);
       } else {
         const errorData = await response.json();
@@ -120,7 +147,7 @@ export default function TodasTransacoesPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <HeaderLogado />
+      <HeaderAuthenticated />
       <main className="bg-[#e4e2e2] pt-10 pb-10 flex-1">
         <div className="container mx-auto">
           <div className="bg-white p-8 rounded-[12px] shadow">
@@ -133,13 +160,23 @@ export default function TodasTransacoesPage() {
                 Voltar
               </Link>
             </div>
-            <div className={`grid gap-8 ${mesesOrdenados.length > 1 ? "md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}>
+            <div
+              className={`grid gap-8 ${
+                mesesOrdenados.length > 1
+                  ? "md:grid-cols-2 lg:grid-cols-3"
+                  : "grid-cols-1"
+              }`}
+            >
               {mesesOrdenados.length === 0 ? (
-                <div className="text-center text-gray-500 py-10 col-span-full">Nenhuma transação encontrada.</div>
+                <div className="text-center text-gray-500 py-10 col-span-full">
+                  Nenhuma transação encontrada.
+                </div>
               ) : (
                 mesesOrdenados.map((mesAno) => (
                   <div key={mesAno}>
-                    <h2 className="text-lg font-bold mb-4 text-right capitalize">{mesAno}</h2>
+                    <h2 className="text-lg font-bold mb-4 text-right capitalize">
+                      {mesAno}
+                    </h2>
                     <div className="flex flex-col gap-4">
                       {transacoesPorMes[mesAno].map((t) => {
                         const aberta = expandida === t.id;
@@ -161,19 +198,40 @@ export default function TodasTransacoesPage() {
                             }}
                             onClick={() => setExpandida(aberta ? null : t.id)}
                           >
-                            <div className="text-gray-500 text-xs">{formatarData(t.data)}</div>
-                            <div className="text-base font-semibold text-gray-800">{t.tipo}</div>
-                            <div className="text-sm text-gray-700">
-                              <b>Conta origem:</b> {formatarConta(t.contaOrigem)}
+                            <div className="text-gray-500 text-xs">
+                              {formatarData(t.data)}
+                            </div>
+                            <div className="text-base font-semibold text-gray-800">
+                              {t.tipo}
                             </div>
                             <div className="text-sm text-gray-700">
-                              <b>Conta destino:</b> {formatarConta(t.contaDestino)}
+                              <b>Conta origem:</b>{" "}
+                              {formatarConta(t.contaOrigem)}
                             </div>
-                            <div className={`text-lg font-bold flex items-center ${t.valor > 0 ? "text-green-700" : "text-red-700"}`}>
-                              {t.valor > 0 ? "+" : "-"} R$ {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                            <div className="text-sm text-gray-700">
+                              <b>Conta destino:</b>{" "}
+                              {formatarConta(t.contaDestino)}
+                            </div>
+                            <div
+                              className={`text-lg font-bold flex items-center ${
+                                t.valor > 0 ? "text-green-700" : "text-red-700"
+                              }`}
+                            >
+                              {t.valor > 0 ? "+" : "-"} R${" "}
+                              {Math.abs(t.valor).toLocaleString("pt-BR", {
+                                minimumFractionDigits: 2,
+                              })}
                               <Image
-                                src={t.valor > 0 ? "/arrow-up.png" : "/arrow-down.png"}
-                                alt={t.valor > 0 ? "Seta para cima" : "Seta para baixo"}
+                                src={
+                                  t.valor > 0
+                                    ? "/arrow-up.png"
+                                    : "/arrow-down.png"
+                                }
+                                alt={
+                                  t.valor > 0
+                                    ? "Seta para cima"
+                                    : "Seta para baixo"
+                                }
                                 width={16}
                                 height={16}
                                 className="ml-2"
@@ -188,22 +246,33 @@ export default function TodasTransacoesPage() {
                                   <b>Data:</b> {formatarData(t.data)}
                                 </div>
                                 <div>
-                                  <b>Valor:</b> {t.valor > 0 ? "+" : "-"} R$ {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                  <b>Valor:</b> {t.valor > 0 ? "+" : "-"} R${" "}
+                                  {Math.abs(t.valor).toLocaleString("pt-BR", {
+                                    minimumFractionDigits: 2,
+                                  })}
                                 </div>
                                 <div>
-                                  <b>Conta origem:</b> {t.contaOrigem ? `${t.contaOrigem.numero} (Ag. ${t.contaOrigem.agencia})` : "-"}
+                                  <b>Conta origem:</b>{" "}
+                                  {t.contaOrigem
+                                    ? `${t.contaOrigem.numero} (Ag. ${t.contaOrigem.agencia})`
+                                    : "-"}
                                 </div>
                                 <div>
-                                  <b>Conta destino:</b> {t.contaDestino ? `${t.contaDestino.numero} (Ag. ${t.contaDestino.agencia})` : "-"}
+                                  <b>Conta destino:</b>{" "}
+                                  {t.contaDestino
+                                    ? `${t.contaDestino.numero} (Ag. ${t.contaDestino.agencia})`
+                                    : "-"}
                                 </div>
                                 {t.contaOrigem?.chavePix && (
                                   <div>
-                                    <b>Chave Pix Origem:</b> {t.contaOrigem.chavePix}
+                                    <b>Chave Pix Origem:</b>{" "}
+                                    {t.contaOrigem.chavePix}
                                   </div>
                                 )}
                                 {t.contaDestino?.chavePix && (
                                   <div>
-                                    <b>Chave Pix Destino:</b> {t.contaDestino.chavePix}
+                                    <b>Chave Pix Destino:</b>{" "}
+                                    {t.contaDestino.chavePix}
                                   </div>
                                 )}
                                 {t.descricao && (
@@ -215,12 +284,12 @@ export default function TodasTransacoesPage() {
                                   <Link
                                     href={`/paravoce/editar/${t.id}`}
                                     className="bg-[#47A138] text-white px-3 py-1 rounded-md hover:bg-[#3a8a2e] transition-colors text-sm"
-                                    onClick={e => e.stopPropagation()}
+                                    onClick={(e) => e.stopPropagation()}
                                   >
                                     Editar
                                   </Link>
                                   <button
-                                    onClick={e => {
+                                    onClick={(e) => {
                                       e.stopPropagation();
                                       handleDelete(t.id);
                                     }}
@@ -236,12 +305,12 @@ export default function TodasTransacoesPage() {
                                 <Link
                                   href={`/paravoce/editar/${t.id}`}
                                   className="bg-[#47A138] text-white px-3 py-1 rounded-md hover:bg-[#3a8a2e] transition-colors text-sm"
-                                  onClick={e => e.stopPropagation()}
+                                  onClick={(e) => e.stopPropagation()}
                                 >
                                   Editar
                                 </Link>
                                 <button
-                                  onClick={e => {
+                                  onClick={(e) => {
                                     e.stopPropagation();
                                     handleDelete(t.id);
                                   }}
