@@ -1,287 +1,238 @@
 "use client";
-
+import BalanceCard from "@/components/BalanceCard";
 import { Footer } from "@/components/Footer";
 import { HeaderAuthenticated } from "@/components/HeaderAuthenticated";
+import ToggleEyeButton from "@/components/ToggleEyeButton";
+import { useBalanceVisibility } from "@/context/BalanceVisibilityContext";
+import ServicosDisponiveisMock from "@/data/servicosdisponiveis.json";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
-import { NovaTransacaoForm, TipoTransacao } from "@/types/transacao";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+type Transacao = {
+  id: string;
+  tipo: string;
+  valor: number;
+  data: string;
+};
 
-export default function NovaTransacaoPage() {
-  const router = useRouter();
-  const getLocalDateYYYYMMDD = () => {
-    const d = new Date();
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    return `${y}-${m}-${day}`;
-  };
+export default function ParaVoce() {
+  const [transacoes, setTransacoes] = useState<Transacao[]>([]);
+  const [saldo, setSaldo] = useState(138529.21); 
+  const { showBalance } = useBalanceVisibility();
 
-  const [formData, setFormData] = useState<NovaTransacaoForm>({
-    tipo: "",
-    valor: "",
-    data: getLocalDateYYYYMMDD(),
-    descricao: "",
-    chavePix: "",
-    agencia: "",
-    numeroConta: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    const load = async () => {
+      const res = await fetch("/api/transacoes");
+      const data: Transacao[] = await res.json();
+      setTransacoes(data); 
+    };
 
-  const tiposTransacao = [
-    { value: TipoTransacao.SAQUE, label: "Saque" },
-    { value: TipoTransacao.PIX, label: "PIX" },
-    { value: TipoTransacao.TED, label: "TED" },
-    { value: TipoTransacao.DEPOSITO, label: "Depósito" },
-    { value: TipoTransacao.TRANSFERENCIA, label: "Transferência" },
-  ];
+    load();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+    const handler = (event: CustomEvent) => {
+      const novaTransacao = event.detail as Transacao;
+      if (!novaTransacao || typeof novaTransacao.valor !== "number") return;
+      setTransacoes((prev) => [novaTransacao, ...prev]);
+      setSaldo((prev) => prev + novaTransacao.valor); 
+    };
 
-    try {
-      // normalize currency: remove thousand separators and convert comma to dot
-      const normalizedValor = parseFloat(
-        String(formData.valor).replace(/\./g, "").replace(",", ".")
+    window.addEventListener(
+      "transacoes:updated",
+      handler as EventListener
+    );
+    return () =>
+      window.removeEventListener(
+        "transacoes:updated",
+        handler as EventListener
       );
+  }, []);
 
-      // normalize date: send date-only as ISO at noon to avoid timezone shifts
-      const normalizedData = formData.data.includes("T")
-        ? formData.data
-        : new Date(formData.data + "T12:00:00").toISOString();
-
-      const response = await fetch("/api/transacoes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          valor: normalizedValor,
-          data: normalizedData,
-        }),
+  const transacoesPorMes = useMemo(() => {
+    const grupos: { [mesAno: string]: Transacao[] } = {};
+    transacoes.forEach((t) => {
+      const data = new Date(t.data);
+      const mesAno = data.toLocaleString("pt-BR", {
+        month: "long",
+        year: "numeric",
       });
-
-      if (response.ok) {
-        router.push("/paravoce");
-      } else {
-        const errorData = await response.json();
-        alert(errorData.error || "Erro ao criar transação");
-      }
-    } catch (error) {
-      console.error("Erro:", error);
-      alert("Erro ao criar transação");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const formatCurrency = (value: string) => {
-    const number = value.replace(/\D/g, "");
-    const formatted = (parseInt(number) / 100).toLocaleString("pt-BR", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+      if (!grupos[mesAno]) grupos[mesAno] = [];
+      grupos[mesAno].push(t);
     });
-    return formatted;
-  };
+    return Object.entries(grupos).sort((a, b) => {
+      const dataA = new Date(a[1][0].data).getTime();
+      const dataB = new Date(b[1][0].data).getTime();
+      return dataB - dataA;
+    });
+  }, [transacoes]);
 
-  const handleValorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatCurrency(e.target.value);
-    setFormData((prev) => ({
-      ...prev,
-      valor: formatted,
-    }));
+  const formatarData = (dataISO: string) => {
+    const d = new Date(dataISO);
+    return (
+      d.toLocaleDateString("pt-BR") +
+      " - " +
+      d.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }) +
+      " hs"
+    );
   };
-
-  const exigeDestino = formData.tipo && formData.tipo !== TipoTransacao.SAQUE;
-  const ehPix = formData.tipo === TipoTransacao.PIX;
 
   return (
     <div className="flex min-h-screen flex-col">
       <HeaderAuthenticated />
-      <div className="bg-[#e4e2e2] pt-10 pb-23 flex-1">
+      <div className="bg-[#e4e2e2] pt-10 pb-10 pl-4 pr-4">
         <div className="container mx-auto">
-          <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">
-              Nova Transação
-            </h1>
+          <div className="gap-6 sm:block md:block lg:flex xl:flex">
+            {/* Menu lateral */}
+            <div className="grow-1 bg-white p-5 rounded-[12px] mb-7">
+              <nav
+                className="flex flex-col space-y-4"
+                aria-label="Navegação principal"
+              >
+                <Link href="#" className="text-[17px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Portfólio
+                </Link>
+                <Link href="/paravoce/transacoes" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Transações
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Conta e extrato
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Produtos de investimento
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Assessoria
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Cartões
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Crédito e consórcio
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Câmbio
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Home broker
+                </Link>
+                <Link href="#" className="text-[18px] font-medium text-[#666] hover:bg-[#e4e1e1] p-1.5">
+                  Seguros
+                </Link>
+              </nav>
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="tipo"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Tipo de Transação *
-                </label>
-                <select
-                  id="tipo"
-                  name="tipo"
-                  value={formData.tipo}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
-                >
-                  <option value="">Selecione o tipo</option>
-                  {tiposTransacao.map((tipo) => (
-                    <option key={tipo.value} value={tipo.value}>
-                      {tipo.label}
-                    </option>
-                  ))}
-                </select>
+            {/* Saldo e serviços */}
+            <div className="grow-2">
+              <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-5 bg-[#CCC] p-7 rounded-[12px] mb-7 bg-[url('/pixels-1.svg')] bg-right-top bg-no-repeat">
+                <section>
+                  <h1 className="text-[26px] color-[#000] font-medium">
+                    Bem-vindo, Paulo : )
+                    <span className="block text-[16px] color-[#000] font-medium">
+                      Quarta-feira, 04/10/2025.
+                    </span>
+                  </h1>
+                </section>
+                <section>
+                  <h2 className="flex items-center text-[26px] color-[#000] font-medium mb-5">
+                    Seu saldo: <ToggleEyeButton />
+                  </h2>
+                  <div className="text-[18px]">
+                    <b>Conta corrente:</b>
+                    <BalanceCard value={saldo} />
+                  </div>
+                </section>
               </div>
 
-              <div>
-                <label
-                  htmlFor="valor"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+              {/* Serviços disponíveis */}
+              <div className="bg-[#CCC] p-7 rounded-[12px] mb-7">
+                <h2 id="servicos-disponiveis" className="text-[24px] font-medium text-[#000] mb-6">
+                  Serviços disponíveis para você
+                </h2>
+                <section
+                  className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5"
+                  aria-labelledby="servicos-disponiveis"
                 >
-                  Valor (R$) *
-                </label>
-                <input
-                  type="text"
-                  id="valor"
-                  name="valor"
-                  value={formData.valor}
-                  onChange={handleValorChange}
-                  placeholder="0,00"
-                  required
-                  className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
-                />
-              </div>
-
-              {exigeDestino && (
-                <div className="space-y-4">
-                  <h3 className="font-medium text-gray-900">
-                    Dados do Destino
-                  </h3>
-
-                  {ehPix ? (
-                    <div>
-                      <label
-                        htmlFor="chavePix"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Chave PIX *
-                      </label>
-                      <input
-                        type="text"
-                        id="chavePix"
-                        name="chavePix"
-                        value={formData.chavePix}
-                        onChange={handleChange}
-                        placeholder="CPF, email, telefone ou chave aleatória"
-                        required
-                        className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
+                  {ServicosDisponiveisMock.map((servicos) => (
+                    <Link
+                      key={servicos.id}
+                      href="#"
+                      className="bg-[#FFF] p-4 text-[#666] flex flex-col items-center justify-center h-42 rounded-[8px] text-[19px] font-semibold text-center"
+                    >
+                      <Image
+                        src={servicos.imagemUrl}
+                        alt={servicos.titulo}
+                        width={60}
+                        height={60}
+                        className="mb-3.5"
                       />
-                    </div>
-                  ) : (
-                    <>
-                      <div>
-                        <label
-                          htmlFor="agencia"
-                          className="block text-sm font-medium text-gray-700 mb-2"
-                        >
-                          Agência *
-                        </label>
-                        <input
-                          type="text"
-                          id="agencia"
-                          name="agencia"
-                          value={formData.agencia}
-                          onChange={handleChange}
-                          placeholder="0000"
-                          required
-                          className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="numeroConta"
-                          className="block text-sm font-medium text-gray-700 mb-2"
-                        >
-                          Número da Conta *
-                        </label>
-                        <input
-                          type="text"
-                          id="numeroConta"
-                          name="numeroConta"
-                          value={formData.numeroConta}
-                          onChange={handleChange}
-                          placeholder="000000-0"
-                          required
-                          className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
-                        />
-                      </div>
-                    </>
-                  )}
+                      {servicos.titulo}
+                    </Link>
+                  ))}
+                </section>
+              </div>
+            </div>
+
+            {/* Extrato financeiro */}
+            <div className="grow-4 bg-white p-6 rounded-[12px]">
+              <section aria-labelledby="extrato-financeiro">
+                <div className="flex justify-between items-center mb-10">
+                  <h3 id="extrato-financeiro" className="text-[24px] font-medium text-[#000]">
+                    Extrato financeiro
+                  </h3>
+                  <Link
+                    href={"/paravoce/nova-transacao"}
+                    className="bg-[#47A138] text-white px-4 py-2 rounded-md hover:bg-[#3a8a2e] text-sm font-medium transition-colors"
+                  >
+                    + Nova Transação
+                  </Link>
                 </div>
-              )}
 
-              <div>
-                <label
-                  htmlFor="data"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Data *
-                </label>
-                <input
-                  type="date"
-                  id="data"
-                  name="data"
-                  value={formData.data}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="descricao"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Descrição (opcional)
-                </label>
-                <input
-                  type="text"
-                  id="descricao"
-                  name="descricao"
-                  value={formData.descricao}
-                  onChange={handleChange}
-                  placeholder="Descrição da transação"
-                  className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#47A138] focus:border-transparent text-lg"
-                />
-              </div>
-
-              <div className="flex gap-4 pt-6">
-                <button
-                  type="button"
-                  onClick={() => router.back()}
-                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 text-lg"
-                >
-                  Cancelar
-                </button>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="flex-1 px-6 py-3 bg-[#47A138] text-white rounded-md hover:bg-[#3a8a2e] focus:outline-none focus:ring-2 focus:ring-[#47A138] disabled:opacity-50 text-lg"
-                >
-                  {isLoading ? "Salvando..." : "Criar Transação"}
-                </button>
-              </div>
-            </form>
+                {transacoesPorMes.map(([mesAno, transacoes]) => (
+                  <div className="mb-10" key={mesAno}>
+                    <h4 className="flex justify-end items-center text-[17px] font-semibold text-[#000] mb-6 mt-3 text-right">
+                      <Image src={"/calendario.svg"} alt="Calendário" width={22} height={22} className="mr-2" />
+                      {mesAno.charAt(0).toUpperCase() + mesAno.slice(1)}
+                    </h4>
+                    <ul className="text-[16px] text-right">
+                      {transacoes
+                        .sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime())
+                        .map((t) => (
+                          <li key={t.id} className="mb-2.5 pb-2.5 border-b border-solid border-[#CCC]">
+                            <p className="flex justify-between w-full">
+                              <span className="text-[#a7a7a7]">{formatarData(t.data)}</span>
+                              <span className="text-[#000] font-semibold">{t.tipo}</span>
+                            </p>
+                            <span
+                              className={`flex justify-end text-[17px] font-semibold items-center ${
+                                t.valor > 0 ? "text-[green]" : "text-[red]"
+                              }`}
+                            >
+                              {showBalance ? (
+                                <>
+                                  {t.valor > 0 ? "+" : "-"} R${" "}
+                                  {Math.abs(t.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                </>
+                              ) : (
+                                "••••••••••"
+                              )}
+                              <Image
+                                src={t.valor > 0 ? "/arrow-up.png" : "/arrow-down.png"}
+                                alt={t.valor > 0 ? "Arrow up" : "Arrow down"}
+                                width={13}
+                                height={13}
+                                className="ml-1"
+                              />
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                ))}
+              </section>
+            </div>
           </div>
         </div>
       </div>

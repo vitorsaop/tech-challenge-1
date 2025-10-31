@@ -9,7 +9,7 @@ type BalanceVisibilityContextType = {
 const BalanceVisibilityContext = createContext<BalanceVisibilityContextType | undefined>(undefined);
 
 export function BalanceVisibilityProvider({ children }: { children: ReactNode }) {
-  const [showBalance, setShowBalance] = useState(true);
+  const [showBalance, setShowBalance] = useState(false);
   const toggleBalance = () => setShowBalance((prev) => !prev);
 
   return (
